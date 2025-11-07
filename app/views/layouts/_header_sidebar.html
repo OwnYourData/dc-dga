@@ -1,0 +1,98 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+:root {
+  --sidebar-width-wide: 220px;
+  --sidebar-width-narrow: 72px;
+  --sidebar-bg: #f8f9fa;
+  --icon-blue: #0d6efd;
+  --icon-white: #fff;
+  --icon-black: #222;
+  --divider: #e5e7eb;
+}
+/* Sidebar base */
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 1030;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--divider);
+  transition: width 0.2s;
+  padding-top: 56px;
+}
+@media (min-width: 1200px) {
+  .sidebar { width: var(--sidebar-width-wide); }
+  .main-content { margin-left: var(--sidebar-width-wide); }
+  .sidebar .sidebar-text { margin-left: 0.7rem; }
+  .page-header { margin-left: 7px; margin-bottom: -5px; }
+}
+/* Schmale Sidebar: perfekt zentrierte, randlose Icons */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .sidebar { 
+    width: var(--sidebar-width-narrow) !important; 
+    align-items: stretch !important; 
+  }
+  .header-bar { margin-top: -10px; }
+  .page-header { margin-left: 7px; margin-bottom: -8px; font-size: 1.4rem; }
+  .main-content { margin-left: var(--sidebar-width-narrow); }
+  .sidebar .sidebar-text { display: none !important; }
+  .sidebar ul.nav { width: 100%; }
+  .sidebar .nav-link {
+    justify-content: center;
+    padding: 0;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+    margin-bottom: 0;
+    width: 100%;
+    transition: background 0.2s;
+  }
+  .sidebar .nav-link .bi {
+    font-size: 2.0rem;
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin: 0;
+    background: none;
+    color: var(--icon-black);
+    transition: background 0.2s, color 0.2s;
+  }
+  .sidebar .nav-link.active .bi,
+  .sidebar .nav-link:focus .bi {
+    background: var(--icon-blue);
+    color: var(--icon-white);
+  }
+  .sidebar .nav-link:not(:last-child) {
+    border-bottom: 1px solid var(--divider);
+  }
+}
+/* Breite Sidebar: Standard Look, black text/icons */
+.sidebar .nav-link {
+  color: var(--icon-black);
+  font-weight: 500;
+  border-radius: 0.5rem;
+  margin-bottom: 0.3rem;
+  transition: background 0.2s, color 0.2s;
+  display: flex; align-items: center;
+}
+.sidebar .nav-link .bi {
+  font-size: 1.3rem;
+  margin-right: 0;
+  color: var(--icon-black);
+  transition: color 0.2s;
+}
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  background: var(--icon-blue);
+  color: var(--icon-white);
+}
+.sidebar .nav-link.active .bi,
+.sidebar .nav-link:hover .bi {
+  color: var(--icon-white);
+}
+</style>

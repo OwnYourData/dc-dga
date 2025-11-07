@@ -1,0 +1,145 @@
+<div class="modal fade"
+     id="dataD3aWizardModal"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+  <div class="modal-dialog modal-xl modal-fullscreen-md-down modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dataD3aModalTitle">Data Disclosure Agreement</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column">
+        <div id="d3a-validation-flash" class="mb-3 w-100"></div>
+        <div class="iframe-wrap">
+          <iframe id="data-d3a-iframe"
+                  src=""
+                  loading="lazy"
+                  referrerpolicy="origin"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <%= t('forms.actions.cancel') %>
+        </button>
+        <div>
+          <%= form_with url: data_d3a_path, method: :post, local: true, html: { id: "data-d3a-form" } do |f| %>
+            <%= f.hidden_field :payload, id: "payload" %>
+            <%= f.hidden_field :meta, id: 'meta' %>
+            <button type="button" id="d3a-validate-btn" class="btn btn-outline-info d-inline ms-2">
+              <%= t('forms.actions.validate', default: 'Validate') %>
+            </button>
+            <button type="button" id="d3a-sign-btn" class="btn btn-success d-inline ms-2">
+              <%= t('forms.actions.sign') %>
+            </button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function attachMessageListener() {
+  if (window.__dataD3aWizardMsgListenerAttached) return;
+  window.__dataD3aWizardMsgListenerAttached = true;
+
+  const d3aIframe = document.getElementById('data-d3a-iframe');
+  const d3aForm   = document.getElementById('data-d3a-form');
+  const payloadEl = d3aForm?.querySelector('input[name="payload"]');
+
+  window.addEventListener('message', function (event) {
+    // Nur Nachrichten vom D3A-iframe annehmen
+    if (!d3aIframe || event.source !== d3aIframe.contentWindow) return;
+
+    let msg = event.data;
+    if (typeof msg === 'string') {
+      try { msg = JSON.parse(msg); } catch (_) {}
+    }
+
+    // nur "data"-artige Messages verarbeiten
+    if (!msg || !(msg.type === 'data' || msg.event === 'data' || msg.kind === 'data')) return;
+
+    const payload = msg.data ?? msg.payload ?? msg.evt?.data;
+    if (payloadEl && payload != null) {
+      payloadEl.value = (typeof payload === 'string') ? payload : JSON.stringify(payload);
+    }
+  });
+})();
+</script>
+
+<script>
+function csrfToken() {
+  const m = document.querySelector('meta[name="csrf-token"]');
+  return m && m.content;
+}
+
+async function validateAsset() {
+  const form = document.getElementById('data-d3a-form');
+  const out  = document.getElementById('d3a-validation-flash');
+  if (!form || !out) return false;
+
+  const fd = new FormData(form);
+  fd.set('commit_action', 'validate');
+
+  try {
+    const resp = await fetch(form.action, {
+      method: 'POST',
+      headers: {
+        'X-CSRF-Token': csrfToken(),
+        'Accept': 'application/json'
+      },
+      body: fd
+    });
+
+    const data = await resp.json();
+    // HTML-Snippet (Alert) anzeigen
+    out.innerHTML = data.html || '';
+    return !!data.valid;
+  } catch (e) {
+    console.error(e);
+    out.innerHTML = '<div class="alert alert-danger mb-3">Validation request failed.</div>';
+    return false;
+  }
+}
+
+// Validate-Button
+document.getElementById('d3a-validate-btn')?.addEventListener('click', async (e) => {
+  const btn = e.currentTarget;
+  const old = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '…';
+  await validateAsset();
+  btn.disabled = false; btn.innerHTML = old;
+});
+
+// Sign-Button
+document.getElementById('d3a-sign-btn')?.addEventListener('click', async (e) => {
+  const btn = e.currentTarget;
+  const old = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '…';
+
+  const ok = await validateAsset();
+
+  if (ok) {
+    const form = document.getElementById('data-d3a-form');
+
+    let hidden = form.querySelector('input[name="commit_action"]');
+    if (!hidden) {
+      hidden = document.createElement('input');
+      hidden.type = 'hidden';
+      hidden.name = 'commit_action';
+      form.appendChild(hidden);
+    }
+    hidden.value = 'sign';
+
+    form.submit(); // submit -> Controller 'sign'
+  } else {
+    // error -> modal kept open
+  }
+
+  btn.disabled = false; btn.innerHTML = old;
+});
+</script>

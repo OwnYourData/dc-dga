@@ -1,0 +1,14 @@
+gem 'mini_racer'
+
+# UI
+gem 'sprockets-rails'
+gem 'rqrcode', '~> 2.0'
+gem 'barby',  '~> 0.6.2'
+gem 'redcarpet'
+
+# PDF generation
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'httmultiparty'
+gem 'ferrum'
+gem 'active_storage-postgresql'

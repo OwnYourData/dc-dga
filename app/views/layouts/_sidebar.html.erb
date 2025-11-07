@@ -1,0 +1,42 @@
+<nav class="sidebar d-none d-md-flex flex-column p-2 p-xl-3 bg-body-tertiary">
+  <span class="d-flex align-items-center mb-3 text-decoration-none px-2">
+    <%= did_logo_tag %>
+    <span class="sidebar-text fs-4" style="margin-bottom: -4px; margin-left: 0;">Intermediary</span>
+  </span>
+  <hr style="margin-top: 0;">
+  <ul class="nav nav-pills flex-column w-100 h-100">
+    <li class="nav-item">
+      <%= sidebar_link assets_path, 'asset', 'bi bi-files' %>
+    </li>
+    <li class="nav-item">
+      <%= sidebar_link data_path, 'data', 'bi bi-database' %>
+    </li>
+    <li class="nav-item">
+      <%= sidebar_link services_path, 'service', 'bi bi-tools' %>
+    </li>
+    <li class="nav-item">
+      <%= sidebar_link contracts_path, 'contract', 'bi bi-file-medical' %>
+    </li>
+    <li class="nav-item">
+      <%= sidebar_link logs_path, 'log', 'bi bi-card-list' %>
+    </li>
+  </ul>
+  <hr>
+  <ul class="nav nav-pills flex-column w-100">
+    <li class="nav-item">
+      <%= sidebar_link info_path, 'info', 'bi bi-info-circle' %>
+    </li>
+    <li class="nav-item">
+      <div class="dropdown">
+          <a href="#" class="nav-item d-flex align-items-center dropdown-toggle link-body-emphasis" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 15px; text-decoration: none; color: var(--icon-black); font-size: 1.1rem;">
+              <i class="bi bi-person-circle text-body-emphasis" style="font-size: 1.3rem;"></i>
+              <strong class="sidebar-text"><%= t('menu.profile') %></strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+              <li><%= link_to t('menu.settings'), settings_path, class: 'dropdown-item' %></li>
+              <li><%= link_to t('menu.logout'), logout_path, class: 'dropdown-item' %></li>
+          </ul>
+      </div>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,46 @@
+<%= form_with url: submit_request_path, method: :post, local: true, class: "container py-5" do |f| %>
+  <div class="row mb-4">
+    <div class="col-sm-1 text-end"> 
+    </div>
+    <div class="col-sm-9">
+      <div class="alert alert-info small" role="alert">
+        <%= t('user_request.intro') %>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <%= f.label :name, t('user_request.name_label'), class: "col-sm-3 col-form-label text-end" %>
+    <div class="col-sm-6">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <%= f.label :email, t('user_request.email_label'), class: "col-sm-3 col-form-label text-end" %>
+    <div class="col-sm-6">
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <%= f.label :beschreibung, t('user_request.note_label'), class: "col-sm-3 col-form-label text-end" %>
+    <div class="col-sm-6">
+      <%= f.text_area :beschreibung, class: "form-control", rows: 3 %>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <%= f.label :referenz_kontakt, t('user_request.reference_label'), class: "col-sm-3 col-form-label text-end" %>
+    <div class="col-sm-6">
+      <%= f.text_field :referenz_kontakt, class: "form-control" %>
+      <small class="form-text text-body-secondary"><%= t('user_request.reference_info') %></small>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <%= f.submit t('forms.actions.submit'), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

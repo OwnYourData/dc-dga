@@ -1,0 +1,47 @@
+<% if flash[:autostart_modal].present? %>
+  <div class="modal fade"
+       id="autostart-modal"
+       data-kind="<%= flash[:autostart_modal][:kind] %>"
+       data-asset-id="<%= flash[:autostart_modal][:asset_id] %>">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header" style="border-bottom: none; margin-bottom: 15px;">
+          <h5 class="modal-title" id="didModalLabel"><%= t('profile.scan_qr_code') %></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-0">
+          <div class="d-flex justify-content-center">
+            <div style="border: 2px solid var(--bs-border-color); border-radius: var(--bs-border-radius); padding: 16px; background: var(--bs-body-bg); display: inline-block;">
+                <% qr_light = Base64.strict_encode64(Barby::QrCode.new(@credential_offer, level: :q).to_png( xdim: 4, foreground: ChunkyPNG::Color::BLACK, background: ChunkyPNG::Color::WHITE ) ) %>
+
+                <% qr_dark = Base64.strict_encode64( Barby::QrCode.new(@credential_offer, level: :q).to_png(xdim: 4, foreground: ChunkyPNG::Color::WHITE, background: ChunkyPNG::Color::BLACK ) ) %>
+                <img src="data:image/png;base64,<%= qr_light %>" class="mode-light img-fluid">
+                <img src="data:image/png;base64,<%= qr_dark %>" class="mode-dark img-fluid">
+            </div>
+          </div>
+          <p class="d-flex justify-content-center "><a href="<%= @credential_offer %>" class="link-primary"><%= t('welcome.wallet.signup_wallet_link') %></a></p>
+        </div>
+        <div class="modal-footer flex-column align-items-stretch w-100 border-top-0" style="margin-top:-15px;">
+          <%= form_with id: "hiddenForm", url: d2a_signed_path, method: :post, style: "display: none;" do %>
+            <%= hidden_field_tag :complete, @complete_code %>
+          <% end %>   
+          <p><%= t('asset.scan_qr_code_instructions') %></p>       
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function checkStatus() {
+      fetch("/check?complete=<%= @complete_code %>")
+        .then(response => response.json())
+        .then(data => {
+          if (data.retVal) {
+            document.getElementById("hiddenForm").submit();
+          }
+        })
+        .catch(error => console.error("Error: ", error));
+    }
+    setInterval(checkStatus, 5000);
+  </script>  
+<% end %>

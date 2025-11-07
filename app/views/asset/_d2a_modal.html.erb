@@ -1,0 +1,146 @@
+<div class="modal fade"
+     id="assetWizardModal"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+  <div class="modal-dialog modal-xl modal-fullscreen-md-down modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="assetWizardTitle">Titel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column">
+        <div id="validation-flash" class="mb-3 w-100"></div>
+        <div class="iframe-wrap">
+          <iframe id="asset-wizard-iframe"
+                  src=""
+                  loading="lazy"
+                  referrerpolicy="origin"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <%= t('forms.actions.cancel') %>
+        </button>
+        <div>
+          <%= form_with url: asset_d2a_path, method: :post, local: true, html: { id: "asset-d2a-form" } do |f| %>
+            <%= f.hidden_field :payload, id: "payload" %>
+            <%= f.hidden_field :meta, id: 'asset-meta' %>
+            <%= f.button name: "commit_action",
+                         value: "save",
+                         class: "btn btn-primary d-inline ms-2" do %>
+              <%= t('forms.actions.save') %>
+            <% end %>
+            <button type="button" id="asset-validate-btn" class="btn btn-outline-info d-inline ms-2">
+              <%= t('forms.actions.validate', default: 'Validate') %>
+            </button>
+            <button type="button" id="asset-sign-btn" class="btn btn-success d-inline ms-2">
+              <%= t('forms.actions.sign') %>
+            </button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function attachMessageListener() {
+  if (window.__assetWizardMsgListenerAttached) return;
+  window.__assetWizardMsgListenerAttached = true;
+
+  window.addEventListener('message', function (event) {
+    if (event.data && event.data.type === 'data') {
+      const input = document.getElementById('payload');
+      if (input) {
+        input.value = JSON.stringify(event.data.evt?.data);
+      } else {
+        console.warn('payload input not found');
+      }
+    }
+  });
+}
+attachMessageListener();
+document.addEventListener('shown.bs.modal', function (e) {
+  const modal = document.getElementById('assetWizardModal');
+  if (!modal || e.target !== modal) return;
+  const iframe = document.getElementById('asset-wizard-iframe');
+});
+</script>
+
+<script>
+function csrfToken() {
+  const m = document.querySelector('meta[name="csrf-token"]');
+  return m && m.content;
+}
+
+async function validateAsset() {
+  const form = document.getElementById('asset-d2a-form');
+  const out  = document.getElementById('validation-flash');
+  if (!form || !out) return false;
+
+  const fd = new FormData(form);
+  fd.set('commit_action', 'validate');
+
+  try {
+    const resp = await fetch(form.action, {
+      method: 'POST',
+      headers: {
+        'X-CSRF-Token': csrfToken(),
+        'Accept': 'application/json'
+      },
+      body: fd
+    });
+
+    const data = await resp.json();
+    // HTML-Snippet (Alert) anzeigen
+    out.innerHTML = data.html || '';
+    return !!data.valid;
+  } catch (e) {
+    console.error(e);
+    out.innerHTML = '<div class="alert alert-danger mb-3">Validation request failed.</div>';
+    return false;
+  }
+}
+
+// Validate-Button
+document.getElementById('asset-validate-btn')?.addEventListener('click', async (e) => {
+  const btn = e.currentTarget;
+  const old = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '…';
+  await validateAsset();
+  btn.disabled = false; btn.innerHTML = old;
+});
+
+// Sign-Button
+document.getElementById('asset-sign-btn')?.addEventListener('click', async (e) => {
+  const btn = e.currentTarget;
+  const old = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '…';
+
+  const ok = await validateAsset();
+
+  if (ok) {
+    const form = document.getElementById('asset-d2a-form');
+
+    let hidden = form.querySelector('input[name="commit_action"]');
+    if (!hidden) {
+      hidden = document.createElement('input');
+      hidden.type = 'hidden';
+      hidden.name = 'commit_action';
+      form.appendChild(hidden);
+    }
+    hidden.value = 'sign';
+
+    form.submit(); // submit -> Controller 'sign'
+  } else {
+    // error -> modal kept open
+  }
+
+  btn.disabled = false; btn.innerHTML = old;
+});
+</script>

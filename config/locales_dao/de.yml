@@ -1,0 +1,230 @@
+de:
+  welcome:
+    title: "Willkommen bei Hinterland Systems!"
+    alternative_signup_description: "Sie haben keine ID Austria oder noch nicht den erforderlichen Berechtigungsnachweis in Ihrer Wallet?"
+    alternative_signup_link: "Füllen Sie das folgende Formular für einen alternativen Zugang aus."
+    ida:
+      signup_title: "Registrierung mit"
+      signup_description: "Melden Sie sich mit Ihrer digitalen Identität „ID Austria“ an. Diese Methode bietet höchste Sicherheit und wird vom österreichischen Staat bereitgestellt."
+      signup_button: "mit ID Austria anmelden"
+      signup_hint: "wie funktioniert das?"
+    wallet:
+      signup_title: "Anmeldung mit Wallet"
+      signup_description: "Nutzen Sie Ihre mobile Wallet-App, um sich datenschutzfreundlich und dezentral bei Hinterland Systems anzumelden. Einfach QR-Code scannen und Anmeldung bestätigen."
+      signup_wallet_link: "im Wallet öffnen"
+      signup_wallet_download: "Laden Sie jetzt die Sphereon Wallet herunter:"
+    join_heading: "Machen Sie mit beim Datenintermediär!"
+    join_intro: "Um sich beim Datenintermediär anzumelden, fügen Sie die erforderlichen Anmeldedaten zu Ihrer Wallet hinzu."
+    join_back: "<a href='/de/start'>Klicken sie hier</a>, um zurück zur Startseite zu gelangen."
+    email_sent: "Vielen Dank für Ihre Anfrage! Ein Mitarbeiter wird sich in kürze bei der angegebenen E-Mail Adresse mit weiteren Informationen melden."
+  asset:
+    new_asset_button: "Datenaustausch beginnen"
+    msg_saved: "Datensatz gespeichert."
+    msg_signed: "Der Eintrag wurde erfolgreich im Datenkatalog verfügbar gemacht."
+    msg_record_deleted: "Der Entwurf wurde gelöscht."
+    uc_header: "Use Case"
+    description_header: "Beschreibung"
+    scan_qr_code_instructions: "Scannen Sie den QR-Code mit Ihrer Wallet, um das Data Agreement für die Datenweitergabe zu unterschreiben."
+  data:
+    request_access_hint: "Zugriff anfordern"
+    msg_record_deleted: "Der Eintrag wurde aus dem Datenkatalog entfernt."
+    msg_signed: "Die Datenanfrage war erfolgreich und die notwendigen Informationen für den Zugriff sind unter 'Meine Verträge' verfügbar."
+  service:
+    provider_header: "Anbieter"
+    title_header: "Service"
+  contract:
+    type_header: "Typ"
+    description_header: "Beschreibung"
+    msg_record_deleted: "Der Vertrag wurde aus der Liste entfernt."
+  log:
+    time_header: "Zeit"
+    event_header: "Ereignis"
+    details_header: "Details"
+  user_request:
+    intro: "Falls Sie sich nicht mit ID Austria anmelden können oder möchten, füllen Sie bitte das folgende Formular aus. Nach erfolgreicher Prüfung erhalten Sie ein E-Mail mit einem Link, über den ein digitales Zugangsticket (Credential) direkt in Ihrem Wallet abgelegt wird. Mit diesem Credential können Sie sich anschließend einloggen."
+    name_label: "Name"
+    email_label: "E-Mail"
+    note_label: "Kommentar"
+    reference_label: "Referenz-Kontakt"
+    reference_info: "E-Mail eines bestehenden Nutzers, der für Sie bürgen kann"
+  info:
+    heading: "Willkommen %{name}!"
+    intro: "Schön, dass Sie an unserem Datennetzwerk teilnehmen! Nachfolgend finden Sie Informationen und Links, um unseren Dienst optimal zu nutzen."
+    more_questions_html: "Weitere Fragen? In unseren %{link} finden Sie Antworten auf die wichtigsten Themen."
+    faq_link_text: "häufig gestellten Fragen"
+    faq_header: "Häufig gestellte Fragen"
+    faq_continue: "Weiterlesen"
+    faq_overview: "Zur Übersicht"
+  profile:
+    id_austria_data: "Daten von der ID Austria"
+    bpk: "(bereichsspezifisches Personenkennzeichen)"
+    contact_data: "Kontaktdaten"
+    missing_validated_email: "Es fehlt noch eine validierte E-Mail-Adresse"
+    enter_current_email: "Bitte geben Sie Ihre aktuelle E-Mail-Adresse ein. Diese wird nach dem Aktualisieren validiert."
+    email_verified_on: "'%{email}' wurde am %{date} verifiziert"
+    wallet_connection: "Wallet Verbindung"
+    wallet_not_connected: "Ihr Profil ist noch nicht mit einer Wallet verbunden"
+    did_hint: "(Dezentrale Identität)"
+    resolve_button: "Resolve"
+    connect_wallet: "mit Wallet verbinden"
+    id_austria_wallet_expiry: "Ihre ID Austria Daten sind im Wallet abgelegt und müssen spätestens am %{date} erneuert werden"
+    scan_qr_code: "Scanne QR Code"
+    scan_qr_code_instructions: "Scanne den QR-Code mit deiner Wallet, um deine DID zu verknüpfen."
+    identity_tab: "Identität"
+    sd_tab: "Selbstauskunft"
+    sd_data_consumer_tab: "für Daten-Anbieter"
+    sd_data_provider_tab: "für Daten-Abnehmer"
+    sd_service_provider_tab: "für Service-Anbieter"
+    payment_tab: "Zahlungsdaten"
+  general:
+    time_header: "Zeit"
+    details_header: "Details"
+    show_entry_hint: "Eintrag anzeigen"
+  menu:
+    asset: "Meine Entwürfe"
+    data: "Datenkatalog"
+    service: "Servicekatalog"
+    contract: "Meine Verträge"
+    log: "Logs"
+    help: "Informationen"
+    help_title: "Informationen"
+    profile: "Profil"
+    settings: "Einstellungen"
+    logout: "Ausloggen"
+  sign:
+    progress: "Vorbereitung der Unterzeichnung läuft."
+    sd_header: "Selbstauskunft unterschreiben"
+    sd_description: "Führen Sie eine der beiden Optionen zum Unterzeichnen der Selbstauskunft für Datenanbieter aus:"
+    sign_ida: "Unterschreiben mit ID Austria"
+    sign_ida_description: "Mit ID Austria anmelden und am Smartphone signieren."
+    sign_or: "oder"
+    sign_wallet: "Unterschreiben mit EUDI Wallet"
+    sign_wallet_description: "Scannen Sie den QR Code mit Ihrer Wallet am Smartphone."
+    success_flash: "Das Dokument wurde erfolgreich unterschrieben und ist unter 'Meine Verträge' abgelegt."
+  mailers:
+    user_mailer:
+      email_verification:
+        subject: "Bitte bestätigen Sie Ihre E-Mail-Adresse"
+        body_text: |
+          Guten Tag %{name},
+
+          Sie haben bei Hinterland Systems die E-Mail-Adresse %{email} hinterlegt.
+          Um sicherzustellen, dass Sie Zugriff auf diese Adresse haben, bitten wir Sie, die Verifizierung abzuschließen.
+
+          Bitte klicken Sie dazu auf folgenden Link:
+          %{link}
+
+          Aus Sicherheitsgründen ist dieser Link nur 24 Stunden gültig.
+          Falls Sie diese Änderung nicht selbst veranlasst haben, ignorieren Sie bitte diese Nachricht.
+
+          Vielen Dank für Ihre Mithilfe!
+
+          Mit freundlichen Grüßen
+          Ihr Team von Hinterland Systems
+        body_html: |
+          <p>Guten Tag %{name},</p>
+          <p>Sie haben beim Datennetzwerk Hinterland Systems die E-Mail-Adresse %{email} hinterlegt. Um sicherzustellen, dass Sie Zugriff auf diese Adresse haben, bitten wir Sie, die Verifizierung abzuschließen.</p>
+          <p>Bitte klicken Sie dazu auf folgenden Link:<br>
+          <a href="%{link}">%{link}</a></p>
+          <p>Aus Sicherheitsgründen ist dieser Link nur 24 Stunden gültig.<br>
+          Falls Sie diese Änderung nicht selbst veranlasst haben, ignorieren Sie bitte diese Nachricht.</p>
+          <p>Vielen Dank für Ihre Mithilfe!</p>
+          <p>Mit freundlichen Grüßen<br>
+          Ihr Team von Hinterland Systems</p>
+      external_user:
+        subject: "Userfreigabe"
+        body_text: |
+          Anfrage vom Webformular:
+          - Name: %{name}
+          - E-Mail: %{email}
+          - Kommentar: %{description}
+          - Referenz: %{reference}
+
+          Link zur Freigabe: %{link}
+        body_html: |
+          <p>Anfrage vom Webformular:</p>
+          <ul>
+          <li>Name: %{name}</li>
+          <li>E-Mail: %{email}</li>
+          <li>Kommentar: %{description}</li>
+          <li>Referenz: %{reference}</li>
+          </ul>
+          <p>Link zur Freigabe: <a href="%{link}">%{link}</a></p>
+  forms:
+    actions:
+      submit: "Abschicken"
+      update: "Aktualisieren"
+      cancel: "Abbrechen"
+      save: "Speichern"
+      validate: "Validieren"
+      sign: "Unterschreiben"
+      close: "Schließen"
+      reset: "Zurücksetzen"
+      pdf_download: "Signiertes PDF herunterladen"
+    placeholders:
+      your_email: "Ihre E-Mail-Adresse"
+      more: "mehr"
+    validation:
+      ok: "Der Datensatz wurde erfolgreich geprüft."
+      failed: "Die Validierung des Datensatzes ist fehlgeschlagen."
+    msg_saved: "Datensatz gespeichert."
+  admin:
+    lang:
+      english: "English"
+      german: "Deutsch"
+    color_mode:
+      light: "Hell"
+      dark: "Dunkel"
+      auto: "Auto"
+    id_austria:
+      eid_url: "ida-q.hinterland.systems"
+      ida_host: "https://eid2.oesterreich.gv.at"
+      state_prefix: "hsys"
+    images:
+      logo_light: "hs.png"
+      logo_dark: "hs-dark.png"
+      logo_alt: "Hinterland Systems Logo"
+    header:
+      title: "Hinterland Registry"
+      title2: "Hinterland Registry"
+      title_short: "Hinterland Registry"
+    footer:
+      imprint: "Impressum"
+      imprint_url: "https://hinterland.systems/imprint/"
+      security: "Datenschutz"
+      security_url: "https://hinterland.systems/privacy-policy/"
+    messages:
+      unknown: "unbekannt"
+      invalid_input: "Ungültige Eingabe"
+      authenticate: "Bitte melden Sie sich zuerst an!"
+      error_login: "Ein Fehler ist bei der Authentifizierung aufgetreten."
+      provide_email: "Bitte vervollständigen Sie Ihr Profil und geben Sie eine E-Mail-Adresse an."
+      invalid_email: "Die eingegebene E-Mail-Adresse ist ungültig. Bitte überprüfen Sie Ihre Eingabe."
+      email_error: "Beim Senden der E-Mail ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+      email_sent: "Ein E-Mail zur Verifizierung wurde erfolgreich versendet."
+      unknown_email_token: "Der E-Mail-Bestätigungslink ist ungültig oder wurde nicht gefunden."
+      expired_email_token: "Der E-Mail-Bestätigungslink ist abgelaufen. Bitte fordern Sie einen neuen an."
+      email_verified: "Ihre E-Mail-Adresse wurde erfolgreich verifiziert."
+      email_verification_failed: "Die E-Mail-Adresse konnte nicht verifiziert werden. Bitte versuchen Sie es erneut."
+      connect_wallet: "Bitte verknüpfen Sie Ihr Profil mit einem Wallet."
+      reconnect_wallet: "Bitte erneuern Sie die Verknüpfung in Ihrem Profil mit einem Wallet."
+      operation_canceled: "Die Operation konnte nicht durchgeführt werden."
+      not_authorized: "Sie haben nicht die erforderliche Berechtigung, um diese Aktion auszuführen."
+  time:
+    formats:
+      long: "%d.%m.%Y %H:%M"
+  date:
+    month_names:
+      - "~"
+      - "Januar"
+      - "Februar"
+      - "März"
+      - "April"
+      - "Mai"
+      - "Juni"
+      - "Juli"
+      - "August"
+      - "September"
+      - "Oktober"
+      - "November"
+      - "Dezember"

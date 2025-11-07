@@ -1,0 +1,36 @@
+<div class="modal fade"
+     id="dataD2aWizardModal"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+  <div class="modal-dialog modal-xl modal-fullscreen-md-down modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dataD2aModalTitle">Data Catalog Entry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column">
+        <div id="validation-flash" class="mb-3 w-100"></div>
+        <div class="iframe-wrap">
+          <iframe id="data-d2a-iframe"
+                  src=""
+                  loading="lazy"
+                  referrerpolicy="origin"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="modal-footer d-flex">
+        <%= button_to t('forms.actions.delete'),
+                      data_delete_path,
+                      method: :post,
+                      id: 'data-delete-btn',
+                      class: 'btn btn-danger d-none' %>
+        <button type="button" class="btn btn-secondary ms-auto" data-bs-dismiss="modal">
+          <%= t('forms.actions.close') %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

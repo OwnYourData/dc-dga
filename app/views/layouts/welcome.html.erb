@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+  <head>
+    <%= render 'layouts/header_default' %>
+    <%= render 'layouts/header_favicon' %>
+    <%= render 'layouts/header_bootstrap' %>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <%= render 'layouts/color_mode' %>
+    <main>
+      <div class="container-md py-4">
+        <%= render 'layouts/headerbar' %>
+        <%= yield %>
+      </div>
+    </main>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<div class="col-md-6">
+  <div class="h-100 p-3 bg-body-tertiary border rounded-3">
+    <h4>
+      <%= t('welcome.ida.signup_title') %>
+      <%= image_tag "idaustria-logo.png", class: "mode-light", alt: "ID Austria", style: "max-width: 100%; height: 3em; vertical-align: middle; margin-left: -10px;" %>
+      <%= image_tag "idaustria-logo-dark.png", class: "mode-dark", alt: "ID Austria", style: "max-width: 100%; height: 3em; vertical-align: middle; margin-left: -10px;" %>
+    </h4>
+    <p class="mb-3 small text-secondary text-start" style="margin-bottom: 50px !important;">
+      <%= t('welcome.ida.signup_description') %>
+    </p>            
+    <p class="d-flex justify-content-center">
+      <%= button_to t('welcome.ida.signup_button'), ida_redirect_path, method: :post, class: "btn btn-outline-primary", params: { session_id: @session_id } %>
+    </p>
+    <div class="text-end small mt-1" style="margin-top: 40px !important;">
+      <a href="https://www.oesterreich.gv.at/id-austria.html" target="_blank" rel="noopener" class="link-secondary"><%= t('welcome.ida.signup_hint') %></a>
+    </div>
+  </div>
+</div>

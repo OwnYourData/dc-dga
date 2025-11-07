@@ -1,0 +1,51 @@
+[data-bs-theme="dark"] thead.table-light {
+  --bs-table-bg: #1f2430;
+  --bs-table-color: #e6e6e6;
+  --bs-table-border-color: rgba(230,230,230,0.15);
+}
+
+/* Utility-Spalten */
+.table .col-fit { width: 1%; white-space: nowrap; }
+.table .col-actions { width: 1%; }
+
+:is(#assetWizardModal, #dataD2aWizardModal, #dataD3aWizardModal, #contractWizardModal) .modal-content {
+  display: flex;
+  flex-direction: column;
+}
+
+:is(#assetWizardModal, #dataD2aWizardModal, #dataD3aWizardModal, #contractWizardModal) .modal-body {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 0;
+  padding: .5rem;
+}
+
+:is(#assetWizardModal, #dataD2aWizardModal, #dataD3aWizardModal, #contractWizardModal) .iframe-wrap {
+  flex: 1 1 auto;
+  overflow: hidden;
+  border-radius: .5rem;
+}
+
+:is(#assetWizardModal, #dataD2aWizardModal, #dataD3aWizardModal, #contractWizardModal) iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 767.98px) {
+  :is(#assetWizardModal, #dataD2aWizardModal, #dataD3aWizardModal, #contractWizardModal) .modal-dialog.modal-fullscreen-md-down {
+    width: 100%;
+    margin: 0 auto;
+    max-height: calc(100% - 70px);
+  }
+  :is(#assetWizardModal, #dataD2aWizardModal, #dataD3aWizardModal, #contractWizardModal) .modal-content {
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  :is(#assetWizardModal, #dataD2aWizardModal, #dataD3aWizardModal, #contractWizardModal) .modal-content {
+    height: 80vh;
+  }
+}

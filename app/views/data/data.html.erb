@@ -1,0 +1,236 @@
+<div class="container py-3">
+  <%= render 'layouts/flash' %>
+
+  <table class="table table-sm table-hover align-middle">
+    <thead class="table-light">
+      <% allowed = @allowed %>
+      <tr>
+        <th>
+          <%= sort_link t("asset.uc_header"), "uc",
+                allowed: allowed,
+                default_col: "id",
+                default_dir: "asc",
+                param_prefix: "data" %>
+        </th>
+        <th>
+          <%= sort_link t("asset.description_header"), "description",
+                allowed: allowed,
+                default_col: "id",
+                default_dir: "asc",
+                param_prefix: "data" %>
+        </th>
+        <th class="text-end"><%= t("general.details_header") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |item| %>
+        <tr>
+          <td><%= item.item["use_case"] %></td>
+          <td><%= item.item["description"] %></td>
+          <td class="text-end col-actions">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+              <button type="button"
+                      class="btn btn-outline-secondary"
+                      title="<%= t('general.show_entry_hint') %>"
+                      data-bs-toggle="modal"
+                      data-bs-target="#dataD2aWizardModal"
+                      data-embed-url="<%= data_soya_path(id: item.id, da: 'share') %>"
+                      data-title="<%= t('general.details_header') %>">
+                <i class="bi bi-eye"></i>
+              </button>
+              <button type="button"
+                      class="btn btn-outline-secondary"
+                      title="<%= t('data.request_access_hint') %>"
+                      data-bs-toggle="modal"
+                      data-bs-target="#dataD3aWizardModal"
+                      data-embed-url="<%= data_soya_path(id: item.id, da: 'disclose') %>"
+                      data-title="<%= t('general.details_header') %>">
+                <i class="bi bi-cloud-arrow-down"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%== pagy_bootstrap_nav(@pagy) %>
+  <%= render 'data/d2a_modal' %>
+  <%= render 'data/d3a_modal' %>
+  <%= render 'data/sign_modal' %>
+
+</div>
+
+<script>
+(() => {
+  // -------- helpers --------
+  const getTheme = () => document.documentElement.getAttribute('data-bs-theme') || 'light';
+  const withParam = (url, k, v) => {
+    const u = new URL(url, window.location.origin);
+    u.searchParams.set(k, v);
+    return u.toString();
+  };
+  const loadEmbedJson = async (url) => {
+    const res = await fetch(url, { headers: { "Accept": "application/json" }, credentials: "same-origin" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!data.url) throw new Error(data.error || "No URL from server");
+    return data; // { id, schema, url, show_delete? }
+  };
+
+  // send theme to iframe, deriving the correct target origin from the iframe src
+  const postTheme = (iframeEl) => {
+    try {
+      if (!iframeEl?.contentWindow || !iframeEl.src) return;
+      const origin = new URL(iframeEl.src, window.location.origin).origin;
+      iframeEl.contentWindow.postMessage({ type: 'jsonforms-theme', theme: getTheme() }, origin);
+    } catch(_) {}
+  };
+
+  // Observe theme changes and notify both iframes if present
+  const notifyBothIframesOnThemeChange = () => {
+    const send = () => {
+      postTheme(document.getElementById('data-d2a-iframe'));
+      postTheme(document.getElementById('data-d3a-iframe'));
+    };
+    const obs = new MutationObserver(send);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+    // initial fire (optional)
+    send();
+  };
+
+  // Generic modal wiring
+  const wireModal = (cfg) => {
+    const {
+      modalId, iframeId, titleId,
+      triggerSelector,                 // CSS selector for buttons/links that open THIS modal
+      metaSelectorList = [],           // optional array of selectors to receive {schema,id} JSON
+      onAfterJson = null,              // optional hook(data) per modal
+      onHidden = null                  // optional cleanup hook
+    } = cfg;
+
+    const modalEl  = document.getElementById(modalId);
+    const iframeEl = document.getElementById(iframeId);
+    const titleEl  = document.getElementById(titleId);
+    if (!modalEl || !iframeEl) {
+      console.warn(`[wizard] missing modal/iframe for ${modalId}`);
+      return;
+    }
+
+    // theme after load
+    iframeEl.addEventListener('load', () => postTheme(iframeEl));
+
+    // delegated clicks for this modal only
+    document.addEventListener('click', async (e) => {
+      const btn = e.target.closest(triggerSelector);
+      if (!btn) return;
+
+      e.preventDefault();
+      try {
+        const url   = btn.dataset.embedUrl;
+        const title = btn.getAttribute('data-title') || '';
+        const data  = await loadEmbedJson(url);
+        const theme = getTheme();
+
+        if (titleEl) titleEl.textContent = title;
+        iframeEl.src = withParam(data.url, 'theme', theme);
+
+        // fill meta inputs if requested
+        if (metaSelectorList.length) {
+          const meta = { schema: data.schema, id: data.id };
+          metaSelectorList.forEach(sel => {
+            const el = document.querySelector(sel);
+            if (el) el.value = JSON.stringify(meta);
+          });
+        }
+
+        // modal-specific hook (e.g., show/hide delete)
+        if (typeof onAfterJson === 'function') onAfterJson(data);
+
+        window.bootstrap?.Modal.getOrCreateInstance(modalEl).show();
+      } catch (err) {
+        console.error(`[wizard] open error (${modalId})`, err);
+        alert("Could not open details: " + err.message);
+      }
+    });
+
+    // cleanup on hide
+    modalEl.addEventListener('hidden.bs.modal', () => {
+      iframeEl.src = '';
+      if (typeof onHidden === 'function') onHidden();
+    });
+  };
+
+  // ----- D2A wiring (Data Sharing) -----
+  wireModal({
+    modalId:  'dataD2aWizardModal',
+    iframeId: 'data-d2a-iframe',
+    titleId:  'dataD2aModalTitle',
+    triggerSelector: 'button[data-bs-target="#dataD2aWizardModal"][data-embed-url],a[data-bs-target="#dataD2aWizardModal"][data-embed-url]',
+    metaSelectorList: ['#data-meta', '#data_meta', 'input[name="meta"]'],
+    onAfterJson: (data) => {
+      const deleteBtn = document.getElementById('data-delete-btn');
+      if (!deleteBtn) return;
+      const show = !!data.show_delete;
+      deleteBtn.classList.toggle('d-none', !show);
+
+      const form = deleteBtn.closest('form');
+      if (form) {
+        let idField = form.querySelector('input[name="id"]');
+        if (!idField) {
+          idField = document.createElement('input');
+          idField.type = 'hidden';
+          idField.name = 'id';
+          form.appendChild(idField);
+        }
+        idField.value = data.id || '';
+      }
+    },
+    onHidden: () => {
+      const deleteBtn = document.getElementById('data-delete-btn');
+      if (deleteBtn) {
+        deleteBtn.classList.add('d-none');
+        const form = deleteBtn.closest('form');
+        const idField = form?.querySelector('input[name="id"]');
+        if (idField) idField.value = '';
+      }
+    }
+  });
+
+  // ----- D3A wiring (Data Disclosure) -----
+  wireModal({
+    modalId:  'dataD3aWizardModal',
+    iframeId: 'data-d3a-iframe',
+    titleId:  'dataD3aModalTitle',
+    triggerSelector: 'button[data-bs-target="#dataD3aWizardModal"][data-embed-url],a[data-bs-target="#dataD3aWizardModal"][data-embed-url]',
+    metaSelectorList: ['#meta'],   // <-- HIER das Hidden-Feld angeben
+  });
+
+  // theme sync for both modals
+  notifyBothIframesOnThemeChange();
+
+  // boot once
+  const boot = () => {};
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  } else {
+    boot();
+  }
+})();
+</script>
+<script>
+(() => {
+  const openOnceFlag = '__autostart_done__';
+
+  const openFromMarker = () => {
+    const marker = document.getElementById('autostart-modal');
+    if (!marker || marker[openOnceFlag]) return;
+    let modalEl = marker.classList?.contains('modal') ? marker : null;
+    if (modalEl) {
+      marker[openOnceFlag] = true; // Einmal-Schranke
+      const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+      modal.show();
+    }
+  };
+  document.addEventListener('DOMContentLoaded', openFromMarker);
+})();
+</script>

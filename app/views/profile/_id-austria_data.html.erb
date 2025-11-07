@@ -1,0 +1,21 @@
+<h4 class="mb-3"><%= t('profile.id_austria_data') %></h4>
+<fieldset disabled>
+  <div class="row g-3">
+    <div class="col-lg-6">
+      <label for="firstName" class="form-label">First name</label>
+      <input type="text" id="firstName" class="form-control" value="<%= @firstname %>" readonly>
+    </div>
+    <div class="col-lg-6">
+      <label for="lastName" class="form-label">Last name</label>
+      <input type="text" id="lastName" class="form-control" value="<%= @lastname %>" readonly>
+    </div>
+    <div class="col-lg-12">
+      <label for="bpk" class="form-label">
+        bPK
+        <span class="text-body-secondary"><%= t('profile.bpk') %></span>
+      </label>
+      <input type="text" id="bpk" class="form-control" value="<%= @bpk %>" readonly>
+    </div>
+  </div>
+</fieldset>
+<hr class="mt-5 border-3 col-lg-12">

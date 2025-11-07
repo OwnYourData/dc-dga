@@ -1,0 +1,41 @@
+<div class="container py-3">
+  <div class="col-lg-8 col-md-10 col-sm-12">
+    <ul class="nav nav-tabs justify-content-center">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="identity-tab" data-bs-toggle="tab" data-bs-target="#identity-tab-pane" type="button" role="tab" aria-controls="identity-tab-pane" aria-selected="true" href="#"><%= t('profile.identity_tab') %></a>
+      </li>
+
+      <li class="nav-item dropdown" role="presentation">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><%= t('profile.sd_tab') %></a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" id="self-declaration-data-provider-tab" data-bs-toggle="tab" data-bs-target="#self-declaration-data-provider-tab-pane" aria-controls="self-declaration-data-provider-tab-pane" aria-selected="false" href="#"><%= t('profile.sd_data_consumer_tab') %></a></li>
+          <li><a class="dropdown-item" href="#"><%= t('profile.sd_data_provider_tab') %></a></li>
+          <li><a class="dropdown-item" href="#"><%= t('profile.sd_service_provider_tab') %></a></li>
+        </ul>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link disabled" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment-tab-pane" type="button" role="tab" aria-controls="payment-tab-pane" aria-selected="false" href="#"><%= t('profile.payment_tab') %></a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="identity-tab-pane" role="tabpanel" aria-labelledby="identity-tab" tabindex="0">
+
+        <div class="container py-3">
+          <div class="row">
+            <%= render 'layouts/flash' %>
+          </div>
+
+          <%= render 'profile/id-austria_data' %>
+          <%= render 'profile/contact_data' %>
+          <%= render 'profile/wallet_connection' %>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="self-declaration-data-provider-tab-pane" role="tabpanel" aria-labelledby="self-declaration-data-provider-tab" tabindex="0">
+        <%= render 'profile/sd_data_provider' %>
+      </div>
+      <div class="tab-pane fade" id="payment-tab-pane" role="tabpanel" aria-labelledby="payment-tab" tabindex="0">
+        not yet available
+      </div>
+    </div>
+  </div>
+</div>

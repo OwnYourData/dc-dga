@@ -1,0 +1,47 @@
+<div class="col-md-6">
+    <div class="h-100 p-3 bg-body-tertiary border rounded-3">
+        <h4 style="margin-top: 19px; margin-bottom: 32px;">
+          <%= t('welcome.wallet.signup_title') %>
+        </h4>
+        <p class="mb-3 small text-secondary text-start">
+          <%= t('welcome.wallet.signup_description') %>
+        </p>                
+        <div class="d-flex justify-content-center">
+          <div style="border: 2px solid var(--bs-border-color); border-radius: var(--bs-border-radius); padding: 16px; background: var(--bs-body-bg); display: inline-block;">
+              <% qr_light = Base64.strict_encode64(Barby::QrCode.new(@auth_request, level: :q).to_png( xdim: 4, foreground: ChunkyPNG::Color::BLACK, background: ChunkyPNG::Color::WHITE ) ) %>
+
+              <% qr_dark = Base64.strict_encode64( Barby::QrCode.new(@auth_request, level: :q).to_png(xdim: 4, foreground: ChunkyPNG::Color::WHITE, background: ChunkyPNG::Color::BLACK ) ) %>
+              <img src="data:image/png;base64,<%= qr_light %>" class="mode-light img-fluid">
+              <img src="data:image/png;base64,<%= qr_dark %>" class="mode-dark img-fluid">
+          </div>
+        </div>
+        <p class="d-flex justify-content-center "><a href="<%= @auth_request %>" class="link-primary"><%= t('welcome.wallet.signup_wallet_link') %></a></p>
+        <div class="text-end mt-1">
+          <small>
+            <%= t('welcome.wallet.signup_wallet_download') %> 
+            <a href="https://apps.apple.com/us/app/sphereon-wallet/id1661096796" target="_blank" rel="noopener" class="link-secondary">
+              iOS</a> |
+            <a href="https://play.google.com/store/apps/details?id=com.sphereon.ssi.wallet" target="_blank" rel="noopener" class="link-secondary">
+              Android</a>
+          </small>
+        </div>
+    </div>
+    <%= form_with id: "hiddenForm", url: continue_path, method: :post, style: "display: none;" do %>
+      <%= hidden_field_tag :complete, @complete_code %>
+    <% end %>
+
+<script>
+  function checkStatus() {
+    fetch("/check?complete=<%= @complete_code %>")
+      .then(response => response.json())
+      .then(data => {
+        if (data.retVal) {
+          document.getElementById("hiddenForm").submit();
+        }
+      })
+      .catch(error => console.error("Error: ", error));
+  }
+  setInterval(checkStatus, 5000);
+</script>
+
+</div>

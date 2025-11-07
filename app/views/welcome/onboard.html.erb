@@ -1,0 +1,48 @@
+<div class="container py-5">
+  <div class="row mb-4">
+    <div class="col text-center">
+      <h1 class="display-5 fw-bold mb-3">
+        <%= t('welcome.join_heading') %>
+      </h1>
+      <p class="lead">
+        <%= t('welcome.join_intro') %>
+      </p>      
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div style="border: 2px solid var(--bs-border-color); border-radius: var(--bs-border-radius); padding: 16px; background: var(--bs-body-bg); display: inline-block;">
+        <% qr_light = Base64.strict_encode64(Barby::QrCode.new(@credential_offer, level: :q).to_png( xdim: 4, foreground: ChunkyPNG::Color::BLACK, background: ChunkyPNG::Color::WHITE ) ) %>
+        <% qr_dark = Base64.strict_encode64( Barby::QrCode.new(@credential_offer, level: :q).to_png(xdim: 4, foreground: ChunkyPNG::Color::WHITE, background: ChunkyPNG::Color::BLACK ) ) %>
+        <img src="data:image/png;base64,<%= qr_light %>" class="mode-light img-fluid">
+        <img src="data:image/png;base64,<%= qr_dark %>" class="mode-dark img-fluid">
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col text-center">
+      <p class="lead">
+        <%= t('welcome.join_back').html_safe %>
+      </p>      
+    </div>
+  </div>
+
+</div>
+<script>
+  let statusInterval;
+
+  function checkStatus() {
+    fetch("/check?complete=<%= @complete_code %>")
+      .then(response => response.json())
+      .then(data => {
+        if (data.retVal) {
+          window.location.href = "/start";
+        }
+      })
+      .catch(error => console.error("Error: ", error));
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    statusInterval = setInterval(checkStatus, 5000);
+  });
+</script>

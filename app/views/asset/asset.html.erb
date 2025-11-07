@@ -1,0 +1,108 @@
+<div class="container py-3"
+     id="asset-ui"
+     data-embed-url="<%= asset_modal_path %>">
+  <%= render 'layouts/flash' %>
+  <div class="dropdown mb-3">
+    <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= t('asset.new_asset_button') %>
+    </button>
+    <ul class="dropdown-menu">
+      <% USE_CASES.each do |key, cfg| %>
+        <li>
+          <a class="dropdown-item"
+             href="#"
+             data-asset-kind="<%= key %>">
+            <%= cfg[:title] %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <table class="table table-sm table-hover align-middle">
+    <thead class="table-light">
+      <% allowed = @allowed %>
+      <tr>
+        <th class="col-fit">
+          <%= sort_link t("general.time_header"), "time",
+                allowed:,
+                default_col: "created_at", 
+                default_dir: "desc",
+                param_prefix: "assets" %>
+        </th>
+        <th>
+          <%= sort_link t("asset.uc_header"), "uc",
+                allowed:,
+                default_col: "created_at", 
+                default_dir: "desc",
+                param_prefix: "assets" %>
+        </th>
+        <th>
+          <%= sort_link t("asset.description_header"), "description",
+                allowed:,
+                default_col: "created_at", 
+                default_dir: "desc",
+                param_prefix: "assets" %>
+        </th>
+        <th class="text-end">
+          <%= t("general.details_header") %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |asset| %>
+        <tr>
+          <td class="text-nowrap col-fit">
+            <time class="js-local-time" datetime="<%= asset.created_at.iso8601 %>"></time>
+          </td>
+          <td><%= asset.item["use_case"] %></td>
+          <td><%= asset.item["description"] %></td>
+          <td class="text-end col-actions">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+              <button type="button"
+                      class="btn btn-outline-secondary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#assetWizardModal"
+                      data-embed-url="<%= asset_soya_path(id: asset.id) %>"
+                      data-title="<%= t('general.details_header') %>">
+                <i class="bi bi-eye"></i>
+              </button>
+
+              <%= button_to "/asset/delete/#{asset.id}",
+                            method: :post,
+                            form: { class: "d-inline" },
+                            class: "btn btn-outline-secondary btn-sm" do %>
+                <i class="bi bi-trash"></i>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%== pagy_bootstrap_nav(@pagy) %>
+  <%= render 'asset/d2a_modal' %>
+  <%= render 'asset/sign_modal' %>
+
+</div>
+
+<script>
+  (function () {
+    const payloadEl = document.getElementById("payload");
+
+    function extractData(msg) {
+      if (!msg || msg.type !== "data") return null;
+      return msg?.evt?.data ?? msg?.data ?? null;
+    }
+
+    window.addEventListener("message", (event) => {
+      const out = extractData(event.data);
+      if (out == null) return; // ignorier Nicht-Daten-Events wie {type:'update'}
+      try {
+        payloadEl.value = JSON.stringify(out);
+      } catch (e) {
+        console.warn("JSON stringify failed:", e);
+      }
+    }, false);
+  })();
+</script>

@@ -1,0 +1,58 @@
+<div class="container py-3">
+  <% allowed = { "time" => "timestamp", "event" => "event" } %>
+  <table class="table table-sm table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th class="col-fit">
+          <%= sort_link t('log.time_header'),  "time",
+                allowed:, 
+                default_col: "timestamp", 
+                default_dir: "desc", 
+                param_prefix: "logs" %>
+        </th>
+        <th><%= sort_link t('log.event_header'), "event", 
+                allowed:, 
+                default_col: "timestamp", 
+                default_dir: "desc", 
+                param_prefix: "logs" %>
+        </th>
+        <th class="text-end"><%= t('log.details_header') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events.each do |ev| %>
+        <tr>
+          <td class="text-nowrap col-fit">
+            <time class="js-local-time" datetime="<%= ev.timestamp.iso8601 %>"></time>
+          </td>
+          <td><%= ev.event %></td>
+          <td class="text-end col-actions">
+            <button type="button"
+                    class="btn btn-outline-secondary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#eventModal"
+                    data-url="<%= object_event_path(id: ev.id) %>"
+                    data-title="<%= t('log.details_header') %>">
+              <i class="bi bi-braces"></i>
+            </button>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>
+
+<div class="modal fade" id="eventModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><%= t('log.details_header') %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <pre class="mb-0"><code id="event-modal-code">{ }</code></pre>
+      </div>
+    </div>
+  </div>
+</div>

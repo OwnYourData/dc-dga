@@ -1,0 +1,181 @@
+<div class="container py-3">
+  <%= render 'layouts/flash' %>
+
+  <table class="table table-sm table-hover align-middle">
+    <thead class="table-light">
+      <% allowed = @allowed %>
+      <tr>
+        <th class="col-fit">
+          <%= sort_link t("general.time_header"), "time",
+                allowed:,
+                default_col: "created_at", 
+                default_dir: "desc",
+                param_prefix: "contracts" %>
+        </th>
+        <th>
+          <%= sort_link t("contract.type_header"), "contract",
+                allowed:,
+                default_col: "created_at", 
+                default_dir: "desc",
+                param_prefix: "contracts" %>
+        </th>
+        <th>
+          <%= sort_link t("contract.description_header"), "description",
+                allowed:,
+                default_col: "created_at", 
+                default_dir: "desc",
+                param_prefix: "contracts" %>
+        </th>
+        <th class="text-end">
+          <%= t("general.details_header") %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |item| %>
+        <tr>
+          <td class="text-nowrap col-fit">
+            <time class="js-local-time" datetime="<%= item.created_at.iso8601 %>"></time>
+          </td>          
+          <td><%= item.item["contract_type"] %></td>
+          <td><%= item.item["description"] %></td>
+          <td class="text-end col-actions">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+              <button type="button"
+                      class="btn btn-outline-secondary"
+                      title="<%= t('general.show_entry_hint') %>"
+                      data-bs-toggle="modal"
+                      data-bs-target="#contractWizardModal"
+                      data-embed-url="<%= contract_soya_path(id: item.id) %>"
+                      data-title="<%= t('general.details_header') %>"
+                      <% if item.respond_to?(:pdf) && item.pdf.attached? %>
+                        data-pdf-url="<%= contract_pdf_path(id: item.id) %>"
+                      <% end %>>
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%== pagy_bootstrap_nav(@pagy) %>
+  <%= render 'contract/contract_modal' %>
+</div>
+
+<script>
+(() => {
+  // -- minimal helpers --
+  const getTheme  = () => document.documentElement.getAttribute('data-bs-theme') || 'light';
+  const withParam = (url, k, v) => { const u = new URL(url, window.location.origin); u.searchParams.set(k, v); return u.toString(); };
+  const loadJSON  = async (url) => {
+    const r = await fetch(url, { headers: { "Accept": "application/json" }, credentials: "same-origin" });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d = await r.json();
+    if (!d.url) throw new Error(d.error || "No URL from server");
+    return d; // { url, show_delete?, id?, ... }
+  };
+  const postTheme = (iframeEl) => {
+    try {
+      if (!iframeEl?.contentWindow || !iframeEl.src) return;
+      const origin = new URL(iframeEl.src, window.location.origin).origin;
+      iframeEl.contentWindow.postMessage({ type: 'jsonforms-theme', theme: getTheme() }, origin);
+    } catch(_) {}
+  };
+
+  const boot = () => {
+    const modalEl   = document.getElementById('contractWizardModal');
+    if (!modalEl) return console.warn('[contract] modal not found');
+    const iframeEl  = modalEl.querySelector('iframe');
+    if (!iframeEl) return console.warn('[contract] iframe not found inside modal');
+    const titleEl   = modalEl.querySelector('#contractModalTitle'); // optional
+    const deleteBtn = document.getElementById('data-delete-btn');
+    const pdfBtn   = document.getElementById('data-pdf-btn');
+
+    // theme after iframe load
+    iframeEl.addEventListener('load', () => postTheme(iframeEl));
+
+    // keep iframe theme in sync if page theme changes
+    const obs = new MutationObserver(() => postTheme(iframeEl));
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+
+    // delegated click: open modal + set iframe url + set title (from data-title)
+    document.addEventListener('click', async (e) => {
+      const trigger = e.target.closest('a[data-bs-target="#contractWizardModal"][data-embed-url],button[data-bs-target="#contractWizardModal"][data-embed-url]');
+      if (!trigger) return;
+
+      e.preventDefault();
+      try {
+        const data = await loadJSON(trigger.dataset.embedUrl);
+        iframeEl.src = withParam(data.url, 'theme', getTheme());
+
+        if (titleEl) titleEl.textContent = trigger.getAttribute('data-title') || '';
+
+        // --- PDF-Download-Button Logik ---
+        if (pdfBtn) {
+          // 1) bevorzugt vom Trigger (serverseitig aus der Liste gesetzt)
+          const pdfFromTrigger = trigger.dataset.pdfUrl;
+          // 2) optional aus der JSON-Antwort des embed-Endpunkts (falls du das dort mitlieferst)
+          const pdfFromJson = (typeof data.pdf_url === 'string' && data.pdf_url.length > 0) ? data.pdf_url : null;
+
+          const pdfUrl = pdfFromTrigger || pdfFromJson;
+
+          if (pdfUrl) {
+            pdfBtn.href = pdfUrl;
+            pdfBtn.classList.remove('d-none');
+            pdfBtn.setAttribute('download', '');   // direkten Download bevorzugen
+            pdfBtn.removeAttribute('target');      // kein neuer Tab nötig
+            pdfBtn.setAttribute('rel', 'noopener');
+          } else {
+            pdfBtn.classList.add('d-none');
+            pdfBtn.removeAttribute('href');
+            pdfBtn.removeAttribute('download');
+            pdfBtn.removeAttribute('target');
+            pdfBtn.removeAttribute('rel');
+          }
+        }
+
+        // --- Delete-Button Logik ---
+        if (deleteBtn) {
+          const show = !!data.show_delete;
+          deleteBtn.classList.toggle('d-none', !show);
+
+          const form = deleteBtn.closest('form');
+          if (form) {
+            let idField = form.querySelector('input[name="id"]');
+            if (!idField) {
+              idField = document.createElement('input');
+              idField.type = 'hidden';
+              idField.name = 'id';
+              form.appendChild(idField);
+            }
+            idField.value = data.id || '';
+          }
+        }
+
+        window.bootstrap?.Modal.getOrCreateInstance(modalEl).show();
+      } catch (err) {
+        console.error('[contract] open error', err);
+        alert('Could not open details: ' + err.message);
+      }
+    });
+
+    // cleanup on hide
+    modalEl.addEventListener('hidden.bs.modal', () => {
+      iframeEl.src = '';
+      if (deleteBtn) {
+        deleteBtn.classList.add('d-none');
+        const form = deleteBtn.closest('form');
+        const idField = form?.querySelector('input[name="id"]');
+        if (idField) idField.value = '';
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  } else {
+    boot();
+  }
+})();
+</script>

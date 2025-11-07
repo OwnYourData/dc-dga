@@ -1,0 +1,43 @@
+<div class="container py-5">
+  <!-- Welcome section -->
+  <div class="row mb-4">
+    <div class="col">
+      <h1 class="display-5 fw-bold mb-3">
+        <%= t('info.heading', name: current_user && current_user[:full_name] || '') %>
+      </h1>
+      <p class="lead">
+        <%= t('info.intro') %>
+      </p>      
+      <%= render 'layouts/flash' %>
+    </div>
+  </div>
+
+  <!-- Informational cards -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% @knowledgebases.each do |kb| %>
+      <div class="col">
+        <div class="card h-100 border rounded-4 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-3">
+              <%# Bootstrap Icons dynamisch: "bi bi-ICONNAME" %>
+              <i class="bi bi-<%= kb.icon %> me-2"></i>
+              <%= kb.title %>
+            </h5>
+            <p class="card-text flex-grow-1">
+              <%= kb.intro %>
+            </p>
+            <%= link_to t('forms.placeholders.more'), article_path(id: kb.short), class: 'stretched-link mt-auto fw-semibold d-block text-end' %> 
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- FAQ link -->
+  <div class="row mt-4">
+    <div class="col">
+        <%= t("info.more_questions_html", 
+               link: link_to(t("info.faq_link_text"), faq_path, class: "fw-semibold" )) %>
+    </div>
+  </div>
+</div>

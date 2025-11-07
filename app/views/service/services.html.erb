@@ -1,0 +1,49 @@
+<div class="container py-3">
+  <%= render 'layouts/flash' %>
+
+  <table class="table table-sm table-hover align-middle">
+    <thead class="table-light">
+      <% allowed = @allowed %>
+      <tr>
+        <th>
+          <%= sort_link t("service.provider_header"), "provider",
+                allowed: allowed,
+                default_col: "id",
+                default_dir: "asc",
+                param_prefix: "service" %>
+        </th>
+        <th>
+          <%= sort_link t("service.title_header"), "title",
+                allowed: allowed,
+                default_col: "id",
+                default_dir: "asc",
+                param_prefix: "service" %>
+        </th>
+        <th class="text-end"><%= t("general.details_header") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |item| %>
+        <tr>
+          <td><%= item.item["service_provider"] %></td>
+          <td><%= item.item["title"] %></td>
+          <td class="text-end col-actions">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+              <button type="button"
+                      class="btn btn-outline-secondary"
+                      title="<%= t('general.show_entry_hint') %>"
+                      data-bs-toggle="modal"
+                      data-bs-target="#dataD2aWizardModal"
+                      data-embed-url="<%= data_soya_path(id: item.id, da: 'share') %>"
+                      data-title="<%= t('general.details_header') %>">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%== pagy_bootstrap_nav(@pagy) %>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="container my-5">
+  <%= link_to "← "+t('info.faq_overview'), faq_path, class: "text-decoration-none d-inline-block mb-3" %>
+
+  <h1 class="mb-3">
+    <% if @knowledgebase.icon.present? %>
+      <i class="bi bi-<%= @knowledgebase.icon %> me-2"></i>
+    <% end %>
+    <%= @knowledgebase.title %>
+  </h1>
+
+  <% if @knowledgebase.intro.present? %>
+    <p class="lead"><%= @knowledgebase.intro %></p>
+    <hr class="my-4">
+  <% end %>
+
+  <div class="markdown-body">
+    <%= markdown(@knowledgebase.description.to_s) %>
+  </div>
+</div>

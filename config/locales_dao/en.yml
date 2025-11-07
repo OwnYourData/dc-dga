@@ -1,0 +1,228 @@
+en:
+  welcome:
+    title: "Welcome to Hinterland Systems!"
+    alternative_signup_description: "Don't have an ID Austria or the required credential in your wallet yet?"
+    alternative_signup_link: "Please complete the following form for alternative access."
+    ida:
+      signup_title: "Sign in with"
+      signup_description: "Sign in with your digital identity „ID Austria“. This method offers the highest level of security and is provided by the Austrian government."
+      signup_button: "Sign in with ID Austria"
+      signup_hint: "how does it work?"
+    wallet:
+      signup_title: "Login with wallet"
+      signup_description: "Use your mobile wallet app to log in to the Hinterland Registry in a privacy-friendly and decentralised manner. Simply scan the QR code and confirm your login."
+      signup_wallet_link: "open in wallet"
+      signup_wallet_download: "Download the Sphereon Wallet here:"
+    join_heading: "Join Hinterland Systems!"
+    join_intro: "To log into the Hinterland Registry, add the necessary credential to your wallet."
+    join_back: "<a href='/en/start'>Click here</a> to return to the start page."
+    email_sent: "Thank you for your enquiry! A member of staff will contact you shortly at the email address provided with further information."
+  asset:
+    new_asset_button: "Initiate Data Exchange"
+    msg_saved: "Record saved."
+    msg_record_deleted: "Draft deleted."
+    msg_signed: "The entry has been successfully made available in the data catalogue."
+    uc_header: "Use Case"
+    description_header: "Description"
+    scan_qr_code_instructions: "Scan the QR code with your wallet to sign the Data Sharing Agreement."
+  data:
+    request_access_hint: "Request access"
+    msg_record_deleted: "The record was removed from the Data Catalogue."
+    msg_signed: "The data request was successful and the necessary information for access is available under 'My Contracts'."
+  service:
+    provider_header: "Provider"
+    title_header: "Service"
+  contract:
+    type_header: "Type"
+    description_header: "Description"
+    msg_record_deleted: "The contract was removed from the list."
+  log:
+    time_header: "Timestamp"
+    event_header: "Event"
+    details_header: "Details"
+  user_request:
+    intro: "If you are unable to log in with ID Austria, please fill out the following form. Once your details have been verified, you will receive an email containing a link that will store a digital access ticket (credential) directly in your wallet. You can then use this credential to log in."
+    name_label: "Name"
+    email_label: "Email"
+    note_label: "Note"
+    reference_label: "Reference contact"
+    reference_info: "Email address of an existing user who can vouch for you"
+  info:
+    heading: "Welcome %{name}!"
+    intro: "We are pleased that you are participating in our data ecosystem! Below you will find information and links to help you make the most of our service."
+    more_questions_html: "More questions? In our %{link} you will find answers to the most important topics."
+    faq_link_text: "frequently asked questions"
+    faq_header: "Frequently Asked Questions"
+    faq_continue: "Read more"
+    faq_overview: "to overview"
+  profile:
+    id_austria_data: "Data from ID Austria"
+    bpk: "(sector-specific personal identifier)"
+    contact_data: "Contact details"
+    missing_validated_email: "A validated email address is still missing"
+    enter_current_email: "Please enter your current email address. It will be validated after updating."
+    email_verified_on: "'%{email}' was verified on %{date}"
+    wallet_connection: "Wallet connection"
+    wallet_not_connected: "Your profile is not yet connected to a wallet"
+    did_hint: "(Decentralised Identifier)"
+    resolve_button: "Resolve"
+    connect_wallet: "connect with wallet"
+    id_austria_wallet_expiry: "Your ID Austria data is stored in the wallet and must be renewed by %{date} at the latest"
+    scan_qr_code: "Scan QR code"
+    scan_qr_code_instructions: "Scan the QR code with your wallet to link your DID."
+    identity_tab: "Identity"
+    sd_tab: "Self-Declaration"
+    sd_data_consumer_tab: "for Data Provider"
+    sd_data_provider_tab: "for Data Consumer"
+    sd_service_provider_tab: "for Service Provider"
+    payment_tab: "Payment Details"
+  general:
+    time_header: "Timestamp"
+    details_header: "Details"
+    show_entry_hint: "Show record"
+  menu:
+    asset: "My Drafts"
+    data: "Data Catalogue"
+    service: "Service Catalogue"
+    contract: "My Contracts"
+    log: "Logs"
+    help: "Help"
+    help_title: "Information Centre"
+    profile: "Profile"
+    settings: "Settings"
+    logout: "Sign out"
+  sign:
+    progress: "Signing preparation in progress..."
+    sd_header: "Sign Self Declaration"
+    sd_description: "Use one of the two options for signing the self-declaration for data providers:"
+    sign_ida: "Sign with ID Austria"
+    sign_ida_description: "Log in with ID Austria and sign on your smartphone."
+    sign_or: "or"
+    sign_wallet: "Sign with EUDI Wallet"
+    sign_wallet_description: "Scan the QR code with your wallet on the smartphone."
+    success_flash: "The document has been successfully signed and is available under 'My Contracts'."
+  mailers:
+    user_mailer:
+      email_verification:
+        subject: "Please confirm your email address"
+        body_text: |
+          Hello %{name},
+
+          You provided the email address %{email} to the data network Hinterland Systems.
+          To make sure you have access to this address, please complete the verification.
+
+          Please click this link:
+          %{link}
+
+          For security reasons, this link is valid for 24 hours only.
+          If you didn’t request this change, please ignore this message.
+
+          Thank you for your cooperation!
+
+          Kind regards on behalf of the Board of the Hinterland Systems Association
+        body_html: |
+          <p>Hello %{name},</p>
+          <p>You provided the email address %{email} to the data network Hinterland Systems.
+          To ensure you have access to this address, please complete the verification.</p>
+          <p>Please click this link:<br>
+          <a href=\"%{link}\">%{link}</a></p>
+          <p>For security reasons, this link is valid for 24 hours only.<br>
+          If you didn’t request this change, please ignore this message.</p>
+          <p>Thank you for your cooperation!</p>
+          <p>Kind regards<br>
+          on behalf of the Board of the Hinterland Systems Association</p>
+      external_user:
+        subject: "Approve new user"
+        body_text: |
+          Request from webform:
+          - Name: %{name}
+          - Email: %{email}
+          - Note: %{description}
+          - Reference: %{reference}
+
+          Approval link: %{link}
+        body_html: |
+          <p>Request from webform:</p>
+          <ul>
+          <li>Name: %{name}</li>
+          <li>Email: %{email}</li>
+          <li>Note: %{description}</li>
+          <li>Reference: %{reference}</li>
+          </ul>
+          <p>Approval link: <a href="%{link}">%{link}</a></p>
+  forms:
+    actions:
+      submit: "Submit"
+      update: "Update"
+      cancel: "Cancel"
+      save: "Save"
+      validate: "Validate"
+      sign: "Sign"
+      close: "Close"
+      reset: "Reset"
+      pdf_download: "Download signed PDF"
+    placeholders:
+      your_email: "Your email address"
+      more: "more"
+    validation:
+      ok: "The record was successfully validated."
+      failed: "The record validation has failed."
+  admin:
+    lang:
+      english: "English"
+      german: "Deutsch"
+    color_mode:
+      light: "Light"
+      dark: "Dark"
+      auto: "Auto"
+    id_austria:
+      eid_url: "ida-q.hinterland.systems"
+      ida_host: "https://eid2.oesterreich.gv.at"
+      state_prefix: "hsys"
+    images:
+      logo_light: "hs.png"
+      logo_dark: "hs-dark.png"
+      logo_alt: "Hinterland Systems Logo"
+    header:
+      title: "Hinterland Registry"
+      title2: "Hinterland Registry"
+      title_short: "Hinterland Registry"
+    footer:
+      imprint: "Imprint"
+      imprint_url: "https://hinterland.systems/imprint/"
+      security: "Data security"
+      security_url: "https://hinterland.systems/privacy-policy/"
+    messages:
+      unknown: "unknown"
+      invalid_input: "Invalid input"
+      authenticate: "Please authenticate first!"
+      error_login: "An error occurred during authentication."
+      provide_email: "Please complete your profile and provide an email address."
+      invalid_email: "The email address you entered is invalid. Please check your input."
+      email_error: "An error occurred while sending the email. Please try again later."
+      email_sent: "The verification email has been sent successfully."
+      unknown_email_token: "The email verification link is invalid or could not be found."
+      expired_email_token: "The email verification link has expired. Please request a new one."
+      email_verified: "Your email address has been successfully verified."
+      email_verification_failed: "The email address could not be verified. Please try again."
+      connect_wallet: "Please complete your profile and connect with a wallet."
+      reconnect_wallet: "Please reconnect your profile with a wallet."
+      operation_canceled: "The operation could not be completed."
+  time:
+    formats:
+      long: "%d.%m.%Y %H:%M"
+  date:
+    month_names:
+      - "~"
+      - "January"
+      - "February"
+      - "March"
+      - "April"
+      - "May"
+      - "June"
+      - "July"
+      - "August"
+      - "September"
+      - "October"
+      - "November"
+      - "December"

@@ -1,0 +1,46 @@
+<div class="modal fade"
+     id="contractWizardModal"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+  <div class="modal-dialog modal-xl modal-fullscreen-md-down modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contractModalTitle">Contract</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column">
+        <div id="validation-flash" class="mb-3 w-100"></div>
+        <div class="iframe-wrap">
+          <iframe id="contract-iframe"
+                  src=""
+                  loading="lazy"
+                  referrerpolicy="origin"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <%= button_to t('forms.actions.delete'),
+                      contract_delete_path,
+                      method: :post,
+                      id: 'data-delete-btn',
+                      class: 'btn btn-danger d-none' %>
+                      
+        <div class="d-flex gap-2">
+          <a id="data-pdf-btn"
+             href="#"
+             class="btn btn-outline-primary d-none"
+             download>
+            <%= t('forms.actions.pdf_download') %>
+          </a>
+
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <%= t('forms.actions.close') %>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

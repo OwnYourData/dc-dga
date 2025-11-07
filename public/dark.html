@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="de" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Intermediary.at – Daten-Intermediär (Dark Mode)</title>
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* ==== Dark-Mode Palette abgestimmt auf euer Orange/Türkis-Key-Visual ==== */
+    :root {
+      --accent-orange: #f6a623;
+      --accent-orange-hover: #ffbf47;
+      --accent-teal: #3cbec9;
+    }
+    @media (prefers-color-scheme: dark) { html { color-scheme: dark; } }
+
+    [data-bs-theme="dark"]{
+      --bs-body-bg:#121212;
+      --bs-body-color:#f5f5f5;
+      --bs-secondary-bg:#1e1e1e;
+      --bs-secondary-color:#bbbbbb;
+      --bs-border-color:#2a2a2a;
+
+      --bs-link-color:var(--accent-teal);
+      --bs-link-hover-color:#00bcd4;
+
+      --bs-primary:var(--accent-orange);
+      --bs-primary-rgb:246,166,35;
+      --bs-btn-color:#111;
+      --bs-btn-hover-border-color:transparent;
+    }
+
+    .brand{font-weight:800;letter-spacing:.02em;text-transform:uppercase}
+    .hero{padding-top:5rem;padding-bottom:4rem}
+    .hero h1{font-size:clamp(2.2rem,4vw,3.2rem);line-height:1.1;margin-bottom:1rem}
+    .hero p.lead{color:var(--bs-secondary-color);max-width:48ch}
+    .section{padding:4rem 0}
+    .section h2{font-size:clamp(1.6rem,2.5vw,2.2rem);margin-bottom:1rem}
+    .muted{color:var(--bs-secondary-color)}
+    .card{background:var(--bs-secondary-bg);border-color:var(--bs-border-color)}
+    .btn-primary{background:var(--accent-orange);border-color:var(--accent-orange);color:#111}
+    .btn-primary:hover,.btn-primary:focus{background:var(--accent-orange-hover);border-color:var(--accent-orange-hover);color:#111}
+    .btn-outline-light{border-color:#666;color:#f5f5f5}
+    .btn-outline-light:hover,.btn-outline-light:focus{background:#2a2a2a;border-color:#888;color:#fff}
+
+    /* Key-Visual Placeholder (ersetzbar durch <img>) */
+    .visual{width:clamp(260px,40vw,520px);aspect-ratio:1/1;border-radius:50%;margin:0 auto;position:relative;background:
+      radial-gradient(closest-side, rgba(60,190,201,.25), transparent 70%),
+      radial-gradient(closest-side, rgba(246,166,35,.18), transparent 75%),
+      radial-gradient(circle at 70% 30%, rgba(246,166,35,.35), transparent 35%),
+      radial-gradient(circle at 30% 70%, rgba(60,190,201,.35), transparent 35%),
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,.06), transparent 60%);
+      box-shadow:0 0 0 1px rgba(255,255,255,.06), inset 0 20px 60px rgba(0,0,0,.4);
+    }
+    .visual::after{content:"";position:absolute;inset:8%;border-radius:50%;
+      background:conic-gradient(from 0deg,
+        rgba(246,166,35,.6), rgba(246,166,35,0) 8% 42%,
+        rgba(60,190,201,.6), rgba(60,190,201,0) 50% 92%,
+        rgba(246,166,35,.6) 100%);
+      mask:radial-gradient(farthest-side,#000 40%,transparent 41%);
+      opacity:.6;filter:blur(.3px)
+    }
+
+    .info-band{background:#2a2418;color:#f2e6c8;border-top:1px solid #3a3324;border-bottom:1px solid #3a3324}
+    footer{color:var(--bs-secondary-color);border-top:1px solid var(--bs-border-color)}
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg border-bottom" style="background:var(--bs-body-bg)">
+    <div class="container">
+      <a class="navbar-brand brand" href="#top">Intermediary.at</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="nav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="#vorteile">Vorteile</a></li>
+          <li class="nav-item"><a class="nav-link" href="#dienste">Dienste</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ueber-uns">Über uns</a></li>
+          <li class="nav-item"><a class="nav-link" href="#kontakt">Kontakt</a></li>
+          <li class="nav-item"><a class="btn btn-primary ms-lg-2" href="#login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="?lang=en" aria-label="English">EN</a></li>
+          <li class="nav-item"><a class="nav-link" href="?lang=de" aria-label="Deutsch">DE</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header id="top" class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <h1>Die effiziente<br>Energiewirtschaft<br>der Zukunft</h1>
+          <p class="lead">
+            Der Schlüssel zur Effizienzsteigerung in der österreichischen Energiewirtschaft
+            ist Datenmanagement mittels Daten-Intermediäre.
+          </p>
+          <div class="d-flex gap-3 mt-4">
+            <a class="btn btn-primary btn-lg" href="#registrieren">Jetzt registrieren</a>
+            <a class="btn btn-outline-light btn-lg" href="#mehr-erfahren">Mehr erfahren</a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          <!-- Neues Key-Visual -->
+          <img src="visual-dark.png"
+               class="img-fluid rounded-circle shadow-lg"
+               alt="Key Visual für Daten-Intermediär im Dark Mode" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== WAS IST EIN DATEN-INTERMEDIÄR ===== -->
+  <section id="mehr-erfahren" class="section info-band">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-8">
+          <h2>Was ist ein Daten-Intermediär?</h2>
+          <p class="mb-0">
+            Ein Datenintermediär ist eine juristische Person, die als Vermittler zwischen
+            Datenanbietern und Datennutzern fungiert. Seine Hauptaufgabe besteht darin,
+            den Austausch von Daten neutral, sicher und regelkonform zu erleichtern.
+          </p>
+        </div>
+        <div class="col-lg-4 d-flex justify-content-lg-end">
+          <a class="btn btn-outline-light" href="#vorteile">Vorteile ansehen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VORTEILE ===== -->
+  <section id="vorteile" class="section">
+    <div class="container">
+      <h2 class="mb-4">Was sind die Vorteile?</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Daten anbieten</h5>
+              <p class="card-text muted">
+                Bieten Sie Ihre Daten sicher und effizient an, erreichen Sie neue Zielgruppen
+                und schöpfen Sie den maximalen Wert mithilfe moderner Tools und Services.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Daten finden</h5>
+              <p class="card-text muted">
+                Entdecken Sie schnell hochwertige Datensätze über intelligente Suche
+                und kuratierte Kataloge – passgenau zu Ihren Anforderungen.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Daten nutzen</h5>
+              <p class="card-text muted">
+                Nutzen Sie Daten gezielt für fundierte Entscheidungen und innovative
+                Lösungen – für nachhaltige, messbare Erfolge.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-4">
+        <div class="col-lg-8">
+          <h5 class="mb-2">Neue Möglichkeiten</h5>
+          <blockquote class="blockquote">
+            <p class="mb-0">Erschließen Sie völlig neue Märkte.</p>
+          </blockquote>
+          <p class="muted">Daten managen &amp; monetarisieren</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="mb-4">Häufige Fragen</h2>
+      <div class="accordion" id="faq">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q1">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
+              Gibt es kostenlose Daten?
+            </button>
+          </h2>
+          <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faq">
+            <div class="accordion-body">
+              Ja, neben frei verfügbaren Daten (z. B. von Universitäten) gibt es zahlreiche
+              kommerzielle Angebote – für App-Entwickler, Shop- und Service-Betreiber
+              sowie alle, die Mehrwert für sich, ihre Kund:innen oder Communities schaffen möchten.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
+              Was sind die gesetzlichen Grundlagen?
+            </button>
+          </h2>
+        <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Grundlage ist der 2023 in Kraft getretene <em>Data Governance Act</em> (DGA).
+            In Österreich ist die Sektion Digitalisierung &amp; E-Government im BKA zuständig;
+            die konkrete Behörde wird eingerichtet.
+          </div>
+        </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">
+              Ist der Service DSGVO-konform?
+            </button>
+          </h2>
+          <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faq">
+            <div class="accordion-body">
+              Ja. Die Einhaltung aller Datenschutz-Auflagen ist zentral. Der Dienst erfüllt
+              die im DGA beschriebenen Kriterien und setzt auf klar definierte Datenvereinbarungen.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q4">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a4">
+              Wer kann auf Daten zugreifen?
+            </button>
+          </h2>
+          <div id="a4" class="accordion-collapse collapse" data-bs-parent="#faq">
+            <div class="accordion-body">
+              Jeder registrierte Benutzer, der in Form einer Datenvereinbarung die
+              konforme Verarbeitung garantiert.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q5">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a5">
+              Wie funktionieren Datenvereinbarungen?
+            </button>
+          </h2>
+          <div id="a5" class="accordion-collapse collapse" data-bs-parent="#faq">
+            <div class="accordion-body">
+              Datenvereinbarungen (Data Agreements) definieren Zweck, Art der Verarbeitung,
+              Speicherdauer und -ort sowie Details zum Benutzer.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q6">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a6">
+              Basierend auf bewährten Standards
+            </button>
+          </h2>
+          <div id="a6" class="accordion-collapse collapse" data-bs-parent="#faq">
+            <div class="accordion-body">
+              Verträge nach ISO&nbsp;27560; Prozesse gemäß Data Governance Act;
+              Kompatibilität mit IDSA-/Gaia-X-Spezifikationen für eine sichere,
+              interoperable Dateninfrastruktur.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="dienste" class="section">
+    <div class="container">
+      <h2 class="mb-3">Services</h2>
+      <h5 class="mb-2">Welche Dienste kann ich verwenden?</h5>
+      <p class="muted mb-2">
+        Der Daten-Intermediär selbst stellt die Funktionen für den Datenaustausch bereit
+        und bietet zusätzlich einen Katalog verifizierter Drittanbieter-Services.
+      </p>
+      <h6 class="mt-3">Wo finde ich diesen Service-Katalog?</h6>
+      <p class="muted">Registrierte Benutzer können die Liste der verfügbaren Dienste einsehen.</p>
+      <a class="btn btn-primary" href="#registrieren">Zur Registrierung</a>
+    </div>
+  </section>
+
+  <!-- ===== ÜBER UNS ===== -->
+  <section id="ueber-uns" class="section">
+    <div class="container">
+      <h2 class="mb-3">Über uns</h2>
+      <p class="muted mb-0">
+        Wir fördern einen sicheren, fairen und effizienten Datenaustausch zwischen
+        Anbietern und Nutzern – als neutrale Schnittstelle mit klaren Regeln.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== KONTAKT / WARTELISTE ===== -->
+  <section id="kontakt" class="section info-band">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <h2 class="mb-2">Kontakt</h2>
+          <p class="mb-2">DID Daten-Intermediär-Dienste FlexCo, Treustraße 52, 1200 Wien</p>
+          <p class="mb-0">E-Mail: <a href="mailto:office@intermediary.at">office@intermediary.at</a></p>
+        </div>
+        <div class="col-lg-6">
+          <h5 class="mb-3">Warteliste</h5>
+          <form class="row g-3" id="registrieren">
+            <div class="col-md-6">
+              <label class="form-label">Vorname</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Nachname</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">E-Mail</label>
+              <input type="email" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">E-Mail bestätigen</label>
+              <input type="email" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Kommentar</label>
+              <textarea class="form-control" rows="3" maxlength="600" required></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Absenden</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="py-4">
+    <div class="container small d-flex flex-wrap gap-3 align-items-center">
+      <span>© <span id="y"></span> intermediary.at</span>
+      <span class="ms-auto">
+        <a class="me-3" href="#impressum">Impressum</a>
+        <a class="me-3" href="#datenschutz">Datenschutz</a>
+        <a class="me-3" href="#imprint">Imprint</a>
+        <a class="me-3" href="#privacy">Privacy</a>
+        <a href="#kontakt">Kontakt</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- Dummy-Anker für Footer-Links -->
+  <div id="impressum"></div>
+  <div id="datenschutz"></div>
+  <div id="imprint"></div>
+  <div id="privacy"></div>
+  <div id="login"></div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

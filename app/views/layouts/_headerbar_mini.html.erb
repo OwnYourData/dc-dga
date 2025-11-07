@@ -1,0 +1,55 @@
+<div class="d-flex align-items-center p-2 border-bottom d-md-none bg-body-tertiary" style="height:56px;">
+  <button class="btn btn-primary me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas">
+    <i class="bi bi-list"></i>
+  </button>
+  <span class="fw-bold fs-4 mb-0" style="margin-left: 15px;"><%= @page_title %></span>
+  <div class="flex-grow-1"></div>
+  <%= render 'layouts/language_dropdown', locals: { dropdown_style: 'margin: -5px 10px -5px 0;' } %>
+</div>
+
+<div class="offcanvas offcanvas-start d-md-none" tabindex="-1" id="sidebarOffcanvas">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">
+      <%= did_logo_tag(style: "margin-top: -10px;") %>
+      <span class="sidebar-text fs-4" style="margin-bottom: -4px; margin-left: 0;"><%= t('admin.header.title_short') %></span>
+    </h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <hr style="margin: 0 15px 0 15px;">
+  <div class="offcanvas-body">
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item mb-2">
+        <%= offcanvas_link assets_path, 'asset', 'bi bi-files' %>
+      </li>
+      <li class="nav-item mb-2">
+        <%= offcanvas_link data_path, 'data', 'bi bi-database' %>
+      </li>
+      <li class="nav-item mb-2">
+        <%= offcanvas_link services_path, 'service', 'bi bi-tools' %>
+      </li>
+      <li class="nav-item mb-2">
+        <%= offcanvas_link contracts_path, 'contract', 'bi bi-file-medical' %>
+      </li>
+      <li class="nav-item mb-2">
+        <%= offcanvas_link logs_path, 'log', 'bi bi-card-list' %>
+      </li>
+    </ul>
+    <hr>
+    <ul class="nav nav-pills flex-column w-100">
+      <li class="nav-item mb-2">
+        <%= offcanvas_link info_path, 'info', 'bi bi-info-circle' %>
+      </li>
+      <li class="nav-item mb-2">
+        <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle link-body-emphasis" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color: var(--icon-black);  margin-top: -10px;">
+                <i class="bi bi-person-circle me-2 text-body-emphasis"></i> <%= t('menu.profile') %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><%= link_to t('menu.settings'), settings_path, class: 'dropdown-item' %></li>
+                <li><%= link_to t('menu.logout'), logout_path, class: 'dropdown-item' %></li>
+            </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

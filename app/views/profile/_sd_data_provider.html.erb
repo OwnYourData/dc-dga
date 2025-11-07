@@ -1,0 +1,305 @@
+<div class="p-2" style="height: 70vh;">
+  <h3>Self Declaration for Data Provider</h3>
+  <iframe class="w-100 h-100 p-2 border-0"
+          id="self-declaration-data-provider-wizard-iframe"
+          data-base-src="https://soya-form.ownyourdata.eu/?viewMode=form-only&schemaDri=SelfDeclarationDataProvider&tag=basic&language=<%= I18n.locale.to_s %>"
+          loading="lazy"
+          referrerpolicy="origin"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+          allowfullscreen></iframe>
+  <div class="d-flex justify-content-between px-2">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+      <%= t('forms.actions.reset') %>
+    </button>
+    <div>
+      <%= form_with url: sign_sd_dataprovider_path, method: :post, local: true, html: { id: "sd-data-provider-form" } do |f| %>
+        <%= f.hidden_field :payload, id: "sd-data-provider-payload" %>
+        <%= f.hidden_field :meta, id: 'sd-data-provider-meta', value: { schema: "SelfDeclarationDataProvider", language: I18n.locale.to_s }.to_json %>
+        <%= f.button name: "commit_action",
+                     value: "save",
+                     class: "btn btn-primary d-inline ms-2" do %>
+          <%= t('forms.actions.save') %>
+        <% end %>
+        <button 
+          type="button" 
+          id="self-declaration-data-provider-sign-btn" 
+          data-csrf-token="<%= form_authenticity_token %>"
+          class="btn btn-success d-inline ms-2">
+          <%= t('forms.actions.sign') %>
+        </button>
+      <% end %>
+    </div>
+  </div>  
+</div>
+
+<div id="sign-spinner-overlay"
+     class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 justify-content-center align-items-center d-none"
+     style="z-index: 2000;">
+  <div class="spinner-border text-light" role="status">
+    <span class="visually-hidden"><%= t('sign.progress') %></span>
+  </div>
+</div>
+
+<style>
+  .section-heading{
+    font-size:.75rem; letter-spacing:.08em; text-transform:uppercase;
+    font-weight:600; color:var(--bs-secondary-color); text-align:center;
+  }
+  .option-inner{ max-width:540px; margin:0 auto; }           /* links */
+  .option-inner--wallet{ max-width:440px; margin:0 auto; }   /* rechts */
+  @media (min-width: 992px){
+    .col-lg-5.option-col{ padding-left:1.25rem; padding-right:1.25rem; }
+  }
+</style>
+
+<div class="modal fade" id="signModal" tabindex="-1" aria-labelledby="signModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+
+      <!-- Header -->
+      <div class="modal-header position-relative flex-column align-items-start pb-3 border-bottom">
+        <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h3 class="modal-title fw-semibold mb-1" id="signModalLabel"><%= t('sign.sd_header') %></h3>
+        <p class="mb-0 text-secondary">
+          <%= t('sign.sd_description') %>
+        </p>
+      </div>
+
+      <div class="modal-body pt-3">
+        <div id="modal-flash"></div>
+
+        <div class="container-fluid">
+          <div class="row g-4 g-xl-5 align-items-start justify-content-center">
+
+            <!-- Linke Spalte -->
+            <div class="col-12 col-lg-5 option-col">
+              <div class="section-heading mb-2"><%= t('sign.sign_ida') %></div>
+              <p class="mb-3 text-secondary"><%= t('sign.sign_ida_description') %></p>
+              <div class="option-inner">
+                <iframe id="sign-iframe"
+                        src=""
+                        class="w-100 border-0 rounded-3"
+                        style="height:35vh; border: 0;"
+                        loading="lazy"
+                        referrerpolicy="origin">
+                </iframe>
+              </div>
+            </div>
+
+            <!-- Mobil: horizontale Trennung mit "or" -->
+            <div class="col-12 d-lg-none">
+              <div class="d-flex align-items-center my-2">
+                <hr class="flex-grow-1">
+                <span class="mx-3 text-muted small text-uppercase"><%= t('sign.sign_or') %></span>
+                <hr class="flex-grow-1">
+              </div>
+            </div>
+
+            <!-- Mitte: "or" auf Höhe der Spaltentitel, vertikale Linie beginnt darunter -->
+            <div class="col-lg-2 d-none d-lg-flex flex-column align-items-center px-0" style="width: 50px;">
+              <div class="section-heading mb-1"><%= t('sign.sign_or') %></div>
+              <div class="vr flex-grow-1 mt-2" style="height: 45vh; margin-left: auto; margin-right: auto;"></div>
+            </div>
+
+            <!-- Rechte Spalte -->
+            <div class="col-12 col-lg-5 option-col">
+              <div class="section-heading mb-2"><%= t('sign.sign_wallet') %></div>
+              <p class="mb-3 text-secondary"><%= t('sign.sign_wallet_description') %></p>
+              <div class="option-inner option-inner--wallet">
+                <div class="d-flex justify-content-center">
+                  <div class="p-3 border rounded-4 bg-body-tertiary d-inline-block">
+                    <img id="qr-light-img" src="" class="mode-light img-fluid" alt="QR code light">
+                    <img id="qr-dark-img" src="" class="mode-dark img-fluid" alt="QR code dark">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <%= t('forms.actions.close') %>
+        </button>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // === Konstante Endpunkte/Intervalle ===
+  const CHECK_URL_BASE = "/check_signed";
+  const SUCCESS_URL = "https://<%= ENV['RAILS_CONFIG_HOSTS'] %>/success_response.<%= I18n.locale.to_s %>.html";
+  const POLL_MS = 5000;
+
+  // === 1. THEME & IFRAME INITIALISIERUNG ===
+  const iframeWizard = document.getElementById("self-declaration-data-provider-wizard-iframe");
+  if (iframeWizard) {
+    const baseSrc = iframeWizard.dataset.baseSrc;
+    const setIframeTheme = () => {
+      const theme = document.documentElement.getAttribute("data-bs-theme") || "light";
+      const url = new URL(baseSrc);
+      url.searchParams.set("theme", theme);
+      iframeWizard.src = url.toString();
+    };
+    setIframeTheme();
+
+    // 👇 Live-Update beim Theme-Wechsel (light/dark)
+    const observer = new MutationObserver(mutations => {
+      for (const m of mutations) {
+        if (m.attributeName === "data-bs-theme") setIframeTheme();
+      }
+    });
+    observer.observe(document.documentElement, { attributes: true });
+  }
+
+  // === 2. MESSAGE LISTENER (Einmalige Registrierung) ===
+  if (!window.__selfDeclarationDataProviderWizardMsgListenerAttached) {
+    window.__selfDeclarationDataProviderWizardMsgListenerAttached = true;
+
+    window.addEventListener("message", event => {
+      if (event.origin !== "https://soya-form.ownyourdata.eu") return;
+      if (event.data && event.data.type === "data" && event.data.data) {
+        const payloadInput = document.getElementById("sd-data-provider-payload");
+        if (payloadInput) {
+          payloadInput.value = JSON.stringify(event.data.data);
+          console.log("✅ Payload updated:", event.data.data);
+        } else {
+          console.warn("⚠️ payload input not found");
+        }
+      }
+    });
+  }
+
+  // === 3. SIGN BUTTON LOGIK (inkl. Spinner & Polling) ===
+  const signBtn = document.getElementById("self-declaration-data-provider-sign-btn");
+  const form = document.getElementById("sd-data-provider-form");
+  const signModalEl = document.getElementById("signModal");
+  const signModalIframe = signModalEl?.querySelector("iframe");
+  const spinnerOverlay = document.getElementById("sign-spinner-overlay");
+  const qrLightImg = signModalEl.querySelector('#qr-light-img');
+  const qrDarkImg  = signModalEl.querySelector('#qr-dark-img');
+
+  const setQR = (imgEl, value) => {
+    if (!imgEl || !value) return;
+    imgEl.src = value;
+  };
+
+  // Polling-Status
+  let pollInterval = null;
+  let currentTicket = null;
+
+  function stopPolling() {
+    if (pollInterval) {
+      clearInterval(pollInterval);
+      pollInterval = null;
+    }
+  }
+
+  function ensureFlashContainer() {
+    let flash = document.getElementById("modal-flash");
+    if (!flash) {
+      flash = document.createElement("div");
+      flash.id = "modal-flash";
+      const modalBody = signModalEl.querySelector(".modal-body") || signModalEl;
+      modalBody.prepend(flash);
+    }
+    return flash;
+  }
+
+  async function checkSignedOnce() {
+    if (!currentTicket) return;
+    try {
+      const url = `${CHECK_URL_BASE}?id=${encodeURIComponent(currentTicket)}`;
+      const resp = await fetch(url, { headers: { "Accept": "application/json" } });
+      if (!resp.ok) return;
+      const data = await resp.json();
+
+      if (data && data.signed === true) {
+        // Erfolg: Iframe umschalten, Flash im Modal, Polling stoppen
+        if (signModalIframe) signModalIframe.src = SUCCESS_URL;
+
+        const flash = ensureFlashContainer();
+        flash.innerHTML = `
+          <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+            <%= t('sign.success_flash') %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>`;
+
+        stopPolling();
+      }
+    } catch (err) {
+      console.error("Fehler bei der Prüfung /check_signed:", err);
+    }
+  }
+
+  function startPolling() {
+    stopPolling(); // Doppelte Intervalle vermeiden
+    pollInterval = setInterval(checkSignedOnce, POLL_MS);
+  }
+
+  if (signBtn && form && signModalEl && signModalIframe && spinnerOverlay) {
+    const signModal = new bootstrap.Modal(signModalEl);
+
+    // Polling beim Schließen des Modals stoppen
+    signModalEl.addEventListener("hidden.bs.modal", stopPolling);
+
+    signBtn.addEventListener("click", async () => {
+      const token = signBtn.dataset.csrfToken || document.querySelector('meta[name="csrf-token"]')?.content;
+
+      // UI: Spinner AN
+      spinnerOverlay.classList.remove("d-none");
+      spinnerOverlay.classList.add("d-flex");
+
+      stopPolling(); // Sicherheitshalber vorher stoppen
+      currentTicket = null;
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: {
+            "X-CSRF-Token": token,
+            "Accept": "application/json"
+          },
+          body: new FormData(form)
+        });
+
+        if (!response.ok) throw new Error("Network response was not ok");
+        const data = await response.json();
+
+        // Erwartet: { url: "...", ticket: "..." }
+        if (data?.url) {
+          signModalIframe.src = data.url;
+        }
+        if (data?.ticket) {
+          currentTicket = data.ticket;
+        }
+        if (data?.qr_light) {
+          setQR(qrLightImg, data.qr_light);
+        }
+        if (data?.qr_dark) {
+          setQR(qrDarkImg,  data.qr_dark);
+        }
+
+        // Modal anzeigen
+        signModal.show();
+
+        // Polling nur starten, wenn Ticket vorhanden ist
+        if (currentTicket) {
+          startPolling();
+        } else {
+          console.warn("⚠️ Kein Ticket im Response – Polling wird nicht gestartet.", data);
+        }
+      } catch (error) {
+        console.error("Fehler beim Starten des Signaturprozesses:", error);
+        alert("Fehler beim Starten des Signaturprozesses.");
+      } finally {
+        // UI: Spinner AUS
+        spinnerOverlay.classList.add("d-none");
+        spinnerOverlay.classList.remove("d-flex");
+      }
+    });
+  }
+});
+</script>

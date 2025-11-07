@@ -1,0 +1,9 @@
+<div class="dropdown" style="<%= defined?(dropdown_style) ? dropdown_style : '' %>">
+  <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    <%= image_tag "language.svg", alt: "Sprache" %> (<%= I18n.locale.to_s.upcase %>)
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+    <li><%= link_to t('admin.lang.german'), { locale: 'de', token: params[:token] }, class: 'dropdown-item' %></li>
+    <li><%= link_to t('admin.lang.english'), { locale: 'en', token: params[:token] }, class: 'dropdown-item' %></li>
+  </ul>
+</div>

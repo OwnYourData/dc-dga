@@ -1,0 +1,102 @@
+<h4 class="mb-3 mt-4"><%= t('profile.wallet_connection') %></h4>
+<%= t('welcome.wallet.signup_wallet_download') %> 
+<a href="https://apps.apple.com/us/app/sphereon-wallet/id1661096796" target="_blank" rel="noopener" class="link-primary">
+  iOS</a> |
+<a href="https://play.google.com/store/apps/details?id=com.sphereon.ssi.wallet" target="_blank" rel="noopener" class="link-primary">
+  Android</a>
+
+<% if @did.to_s == '' %>
+  <div class="alert alert-warning d-flex align-items-center mt-2" role="alert">
+    <i class="bi bi-exclamation-triangle me-2"></i>
+    <span><%= t('profile.wallet_not_connected') %></span>
+  </div>
+<% end %>
+<div>
+  <label for="did" class="form-label">
+    DID
+    <span class="text-body-secondary"><%= t('profile.did_hint') %></span>
+  </label>
+  <div class="input-group">
+    <input type="text" id="did" class="form-control" value="<%= @did %>" readonly>
+    <button id="inspect-button" type="button" class="btn btn-outline-secondary">
+      <%= t('profile.resolve_button') %>
+    </button>
+  </div>
+</div>
+<%= button_tag t('profile.connect_wallet'),
+               type: "button",
+               class: "btn btn-primary mt-2",
+               data: { bs_toggle: "modal", bs_target: "#didModal" } %>
+<% if @did_renew_at.to_s != '' %>
+  <div class="alert alert-info d-flex align-items-center mt-2" role="alert">
+    <i class="bi bi-info-circle me-2"></i>
+    <span>
+      <%= t('profile.id_austria_wallet_expiry',
+             date: (@did_renew_at ? l(@did_renew_at, format: :long) : t('admin.messages.unknown'))) %>
+    </span>
+  </div>
+<% end %>
+
+<div class="modal fade" id="didModal" tabindex="-1" aria-labelledby="didModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: none;">
+        <h5 class="modal-title" id="didModalLabel"><%= t('profile.scan_qr_code') %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="d-flex justify-content-center">
+          <div style="border: 2px solid var(--bs-border-color); border-radius: var(--bs-border-radius); padding: 16px; background: var(--bs-body-bg); display: inline-block;">
+              <% qr_light = Base64.strict_encode64(Barby::QrCode.new(@credential_offer, level: :q).to_png( xdim: 4, foreground: ChunkyPNG::Color::BLACK, background: ChunkyPNG::Color::WHITE ) ) %>
+
+              <% qr_dark = Base64.strict_encode64( Barby::QrCode.new(@credential_offer, level: :q).to_png(xdim: 4, foreground: ChunkyPNG::Color::WHITE, background: ChunkyPNG::Color::BLACK ) ) %>
+              <img src="data:image/png;base64,<%= qr_light %>" class="mode-light img-fluid">
+              <img src="data:image/png;base64,<%= qr_dark %>" class="mode-dark img-fluid">
+          </div>
+        </div>
+        <p class="d-flex justify-content-center "><a href="<%= @credential_offer %>" class="link-primary"><%= t('welcome.wallet.signup_wallet_link') %></a></p>        
+        <p><%= t('profile.scan_qr_code_instructions') %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('inspect-button');
+    const input  = document.getElementById('did');
+
+    button.addEventListener('click', function() {
+      const did = input.value.trim();
+      if (did) {
+        window.open(`https://dev.uniresolver.io/#${encodeURIComponent(did)}`, '_blank');
+      }
+    });
+  });
+</script>
+<script>
+  let statusInterval;
+
+  function checkStatus() {
+    fetch("/check?complete=<%= @complete_code %>")
+      .then(response => response.json())
+      .then(data => {
+        if (data.retVal) {
+          clearInterval(statusInterval);
+          window.location.reload();
+        }
+      })
+      .catch(error => console.error("Error: ", error));
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const modalEl = document.getElementById('didModal');
+    modalEl.addEventListener('shown.bs.modal', function () {
+      statusInterval = setInterval(checkStatus, 5000);
+    });
+    modalEl.addEventListener('hidden.bs.modal', function () {
+      clearInterval(statusInterval);
+    });
+  });
+</script>

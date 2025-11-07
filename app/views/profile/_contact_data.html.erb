@@ -1,0 +1,23 @@
+<h4 class="mb-3 mt-4"><%= t('profile.contact_data') %></h4>
+<% if @email_verified_at.nil? %>
+  <div class="alert alert-warning d-flex align-items-center mt-2" role="alert">
+    <i class="bi bi-exclamation-triangle me-2"></i>
+    <span><%= t('profile.missing_validated_email') %></span>
+  </div>
+<% end %>
+<%= form_tag email_update_path, method: :post, class: "d-flex align-items-center" do %>
+  <%= text_field_tag :email, @email, class: "form-control me-2", placeholder: t('forms.placeholders.your_email') %>
+  <%= submit_tag t('forms.actions.update'), class: "btn btn-primary" %>
+<% end %>
+<small class="text-body-secondary"><%= t('profile.enter_current_email') %></small>
+<% if !@email_verified_at.nil? %>
+  <div class="alert alert-info d-flex align-items-center mt-2" role="alert">
+    <i class="bi bi-info-circle me-2"></i>
+    <span>
+      <%= t('profile.email_verified_on',
+             email: @email_verified,
+             date: (@email_verified_at ? l(@email_verified_at, format: :long) : 'unknown')) %>
+    </span>
+  </div>
+<% end %>
+<hr class="mt-5 border-3">

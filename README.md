@@ -1,6 +1,6 @@
 # DGA Frontend
 
-This repository provides the frontend implementation for **Data Intermediary** and **Data Altruist** services developed under the **EU Data Governance Act (DGA)** framework.  
+This repository provides the frontend implementation for **Data Intermediary** and **Data Altruism Organisation** services developed under the **EU Data Governance Act (DGA)** framework.  
 It delivers user-facing components that enable individuals and organizations to manage data sharing, consent, and altruistic data contributions in a **transparent, trusted, and human-centric** manner.
 
 ---

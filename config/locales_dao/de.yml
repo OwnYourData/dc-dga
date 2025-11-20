@@ -13,8 +13,8 @@ de:
       signup_description: "Nutzen Sie Ihre mobile Wallet-App, um sich datenschutzfreundlich und dezentral bei Hinterland Systems anzumelden. Einfach QR-Code scannen und Anmeldung bestätigen."
       signup_wallet_link: "im Wallet öffnen"
       signup_wallet_download: "Laden Sie jetzt die Sphereon Wallet herunter:"
-    join_heading: "Machen Sie mit beim Datenintermediär!"
-    join_intro: "Um sich beim Datenintermediär anzumelden, fügen Sie die erforderlichen Anmeldedaten zu Ihrer Wallet hinzu."
+    join_heading: "Machen Sie mit beim Datennetzwerk!"
+    join_intro: "Um sich beim Datennetzwerk anzumelden, fügen Sie die erforderlichen Anmeldedaten zu Ihrer Wallet hinzu."
     join_back: "<a href='/de/start'>Klicken sie hier</a>, um zurück zur Startseite zu gelangen."
     email_sent: "Vielen Dank für Ihre Anfrage! Ein Mitarbeiter wird sich in kürze bei der angegebenen E-Mail Adresse mit weiteren Informationen melden."
   asset:
@@ -81,7 +81,7 @@ de:
     details_header: "Details"
     show_entry_hint: "Eintrag anzeigen"
   menu:
-    asset: "Meine Entwürfe"
+    asset: "Meine Schemas"
     data: "Datenkatalog"
     service: "Servicekatalog"
     contract: "Meine Verträge"

@@ -81,7 +81,7 @@ en:
     details_header: "Details"
     show_entry_hint: "Show record"
   menu:
-    asset: "My Assets"
+    asset: "My Schemes"
     data: "Data Catalogue"
     service: "Service Catalogue"
     contract: "My Contracts"

@@ -1,21 +1,21 @@
 # intermediary
-Knowledgebase.find_or_initialize_by(short: "intermediary", lang: "de").update!(
+Knowledgebase.find_or_initialize_by(short: "DAO", lang: "de").update!(
   position: 1,
   frontpage: true,
-  title: "Vorteile eines Datenintermediärs",
+  title: "Vorteile eines Datennetzwerks",
   icon: "people-fill",
-  intro: "Erfahren Sie, wie ein neutraler Intermediär Vertrauen schafft, Datenaustausch vereinfacht und die Einhaltung regulatorischer Anforderungen unterstützt.",
-  link: "/faq/intermediary",
-  description: "intermediary *de*"
+  intro: "Erfahren Sie, wie ein reguliertes Datennetzwerk Vertrauen schafft, Datenaustausch vereinfacht und die Einhaltung regulatorischer Anforderungen unterstützt.",
+  link: "/faq/DAO",
+  description: "DAO als Nukleus des Datennetzwerks ... *de*"
 )
-Knowledgebase.find_or_initialize_by(short: "intermediary", lang: "en").update!(
+Knowledgebase.find_or_initialize_by(short: "DAO", lang: "en").update!(
   position: 1,
   frontpage: true,
-  title: "Benefits of a Data Intermediary",
+  title: "Benefits of a Data Network",
   icon: "people-fill",
-  intro: "Learn how a neutral intermediary builds trust, simplifies data exchange, and supports compliance with regulatory requirements.",
-  link: "/faq/intermediary",
-  description: "intermediary **en**"
+  intro: "Learn how regulated data networks builds trust, simplifies data exchange, and supports compliance with regulatory requirements.",
+  link: "/faq/DAO",
+  description: "DAO as strategic nucleus of the data network ... **en**"
 )
 
 # provide
@@ -24,7 +24,7 @@ Knowledgebase.find_or_initialize_by(short: "provide", lang: "de").update!(
   frontpage: true,
   title: "Daten bereitstellen",
   icon: "upload",
-  intro: "Hier erfahren Sie, wie Sie Ihre Daten im Intermediär registrieren und bereitstellen können – vom Datenkatalog über Metadaten bis hin zur Verwaltung von Zugriffsrechten.",
+  intro: "Hier erfahren Sie, wie Sie Ihre Daten im Datennetzwerk registrieren und bereitstellen können – vom Datenkatalog über Metadaten bis hin zur Verwaltung von Zugriffsrechten.",
   link: "/faq/provide",
   description: ""
 )
@@ -33,7 +33,7 @@ Knowledgebase.find_or_initialize_by(short: "provide", lang: "en").update!(
   frontpage: true,
   title: "Provide Data",
   icon: "upload",
-  intro: "Learn how to register and provide your data in the intermediary—from the data catalogue and metadata to managing access rights.",
+  intro: "Learn how to register and provide your data in the data network – from the data catalogue and metadata to managing access rights.",
   link: "/faq/provide",
   description: ""
 )
@@ -64,7 +64,7 @@ Knowledgebase.find_or_initialize_by(short: "use", lang: "de").update!(
   frontpage: true,
   title: "Service verwenden",
   icon: "gear-fill",
-  intro: "Lernen Sie die verschiedenen Services kennen, die unser Intermediär anbietet – von Datenverarbeitungsservices bis hin zu analytischen Anwendungen.",
+  intro: "Lernen Sie die verschiedenen Services kennen, die unser Datennetzwerk anbietet – von Datenverarbeitungsservices bis hin zu analytischen Anwendungen.",
   link: "/faq/use",
   description: ""
 )
@@ -73,7 +73,7 @@ Knowledgebase.find_or_initialize_by(short: "use", lang: "en").update!(
   frontpage: true,
   title: "Use Services",
   icon: "gear-fill",
-  intro: "Get to know the various services offered by our intermediary—from data processing services to analytical applications.",
+  intro: "Get to know the various services offered by our data network — from data processing services to analytical applications.",
   link: "/faq/use",
   description: ""
 )
@@ -84,7 +84,7 @@ Knowledgebase.find_or_initialize_by(short: "register", lang: "de").update!(
   frontpage: true,
   title: "Service registrieren",
   icon: "ui-checks-grid",
-  intro: "Wenn Sie einen eigenen Service anbieten möchten, erfahren Sie hier, wie Sie diesen registrieren, beschreiben und mit den passenden Datenschutz- und Nutzungsrichtlinien versehen.",
+  intro: "Wenn Sie einen eigenen Service integrieren möchten, erfahren Sie hier, wie Sie diesen registrieren, beschreiben und mit den passenden Datenschutz- und Nutzungsrichtlinien versehen.",
   link: "/faq/register",
   description: ""
 )
@@ -93,7 +93,7 @@ Knowledgebase.find_or_initialize_by(short: "register", lang: "en").update!(
   frontpage: true,
   title: "Register a Service",
   icon: "ui-checks-grid",
-  intro: "If you want to offer your own service, learn how to register and describe it and attach the appropriate privacy and terms-of-use policies.",
+  intro: "If you want to integrate your own service, learn how to register and describe it and attach the appropriate privacy and terms-of-use policies.",
   link: "/faq/register",
   description: ""
 )

@@ -15,7 +15,7 @@ The frontend serves as the **interaction layer** for DGA-compliant data network 
 - Access dashboards for **data access requests, audit trails, and credentials**  
 - Interact with **wallets** and **verifiable credentials** through secure OID4VCI / OID4VP flows  
 
-It is designed to be modular, adaptable, and compatible with multiple backend environments (e.g., Data Intermediary Platform, DAO Portal).
+It is designed to be modular, adaptable, and compatible with multiple backend environments (e.g., Data Intermediary Platform, DAO Archive).
 
 ## About  
 

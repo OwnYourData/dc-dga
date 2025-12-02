@@ -49,7 +49,7 @@ class AdminController < ApplicationController
                             event_str: 'd2a_sign', 
                             event_object: @rec.as_json)
             else
-                flash[:warning] = error_message
+                flash[:warning] = error_message || 'Error'
             end
         end
         redirect_to assets_path

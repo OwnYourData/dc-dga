@@ -198,14 +198,16 @@ class ProfileController < ApplicationController
                 "RedirectUrl" => 'https://' + ENV['RAILS_CONFIG_HOSTS'].to_s + '/sigbox/success',
                 "ErrorUrl"    => 'https://' + ENV['RAILS_CONFIG_HOSTS'].to_s + '/sigbox/failuer' } )
         location = response.headers['location'] || response.headers['Location']
+puts 'location: ' + location.to_s
         ticket = location.split('/').last
+puts 'ticket: ' + ticket.to_s
 
         # add PDF to sign
         uri = URI.parse(location + "/documents")
         request = Net::HTTP::Post::Multipart.new(
             uri.path,
             "document" => UploadIO.new(StringIO.new(pdf_binary), "application/pdf", filename),
-            "location" => "Signed at the end of the document",
+            "location" => "my.go-data.at PDF signature",
             "reason"   => "Signed to confirm the self-declaration",
             "template" => ENV['SIGBOX_TEMPLATE'] || 23 )
         request['Cache-Control'] = "no-cache"
@@ -220,7 +222,9 @@ class ProfileController < ApplicationController
             headers: {
                 "Cache-Control" => "no-cache",
                 "x-api-key" => ENV['SIGBOX_USER_KEY'].to_s } )
+puts response.to_s
         sign_url = response.headers['location'] || response.headers['Location']
+puts 'sign_url: ' + sign_url.to_s
 
         if meta.nil?
             meta = {}

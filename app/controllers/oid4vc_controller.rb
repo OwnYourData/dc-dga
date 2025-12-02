@@ -388,6 +388,8 @@ class Oid4vcController < ApplicationController
         credential["vc"]["expirationDate"] = Time.at(expirationDate).strftime("%Y-%m-%dT%H:%M:%SZ")
         credential["exp"] = expirationDate
 
+puts "credential: " + credential.to_json
+
         algorithm = 'ES256'
         header = {
             alg: algorithm,

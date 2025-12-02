@@ -176,8 +176,8 @@ en:
       dark: "Dark"
       auto: "Auto"
     id_austria:
-      eid_url: "ida-q.hinterland.systems"
-      ida_host: "https://eid2.oesterreich.gv.at"
+      eid_url: "ida.hinterland.systems"
+      ida_host: "https://eid.oesterreich.gv.at"
       state_prefix: "hsys"
     images:
       logo_light: "hs.png"

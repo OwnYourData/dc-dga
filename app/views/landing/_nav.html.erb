@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+  <div class="container">
+    <%= link_to root_path, class: "navbar-brand d-flex align-items-center gap-2" do %>
+      <%= image_tag(t('admin.images.logo_light'), class: "mode-light", alt: t('admin.images.logo_alt'), width: 50, style: "margin-top: -5px;") %>
+      <!-- <span class="d-inline-block rounded" style="width:28px;height:28px;background:#111;"></span> -->
+      <span class="fw-semibold">Intermediary.at</span>
+    <% end %>
+
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNav"
+            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a href="/<%= I18n.locale.to_s %>/home#advantages" class="nav-link"><%= t("landing.menu.advantages") %></a></li>
+        <li class="nav-item"><a href="/<%= I18n.locale.to_s %>/home#services" class="nav-link"><%= t("landing.menu.services") %></a></li>
+        <li class="nav-item"><a href="/<%= I18n.locale.to_s %>/home#contact" class="nav-link"><%= t("landing.menu.contact") %></a></li>
+        <li class="nav-item"><a href="/<%= I18n.locale.to_s %>/home#faq" class="nav-link"><%= t("landing.menu.faq") %></a></li>
+
+        <li class="nav-item ms-lg-2">
+          <%= link_to t("nav.login"), 
+              'https://' + ENV['RAILS_CONFIG_HOSTS'] + '/' + I18n.locale.to_s, 
+              class: "btn btn-outline-dark btn-sm" %>
+        </li>
+
+        <li class="nav-item dropdown ms-lg-2">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= I18n.locale.to_s.upcase %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><%= link_to "DE", url_for(locale: :de), class: "dropdown-item" %></li>
+            <li><%= link_to "EN", url_for(locale: :en), class: "dropdown-item" %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

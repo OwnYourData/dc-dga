@@ -190,8 +190,8 @@ en:
     footer:
       imprint: "Imprint"
       imprint_url: "https://hinterland.systems/imprint/"
-      security: "Data security"
-      security_url: "https://hinterland.systems/privacy-policy/"
+      privacy: "Privacy Policy"
+      privacy_url: "https://hinterland.systems/privacy-policy/"
     messages:
       unknown: "unknown"
       invalid_input: "Invalid input"

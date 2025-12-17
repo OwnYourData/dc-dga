@@ -1,4 +1,76 @@
 en:
+  landing:
+    title: "The Data Ecosystem<br>of the Future"
+    subtitle: "Structured data management with a data intermediary<br>creates the basis for efficient data exchange"
+    cta_primary: "Register Now"
+    cta_secondary: "Learn More"
+    what_is_did: "What is a Data Intermediary?"
+    what_is_did_desc: "A data intermediary is a legal entity that acts as a mediator between data providers and data users. Its main task is to facilitate the exchange of data."
+    advantages_title: "What are the advantages?"
+    privacy_link: "https://intermediary.at/privacy"
+    menu:
+      advantages: "Advantages"
+      services: "Services"
+      contact: "Contact"
+      faq: "FAQ"
+    advantage:
+      provide_title: "Provide Data"
+      provide_desc: "Offer your data securely and efficiently through our platform and reach a wide range of potential buyers. Use our advanced tools and services to extract maximum value from your data."
+      find_title: "Find Data"
+      find_desc: "Quickly and easily find the data you need for your project on our platform, which offers a wide range of high-quality datasets. Take advantage of our intelligent search functions to discover exactly the data that meets your requirements."
+      utilize_title: "Utilise Data"
+      utilize_desc: "Utilise the potential of data to make well-founded decisions and develop pioneering solutions. By making targeted use of our database, you can optimise your strategic decisions and ensure sustainable success."
+    hero:
+      kicker: "New Opportunities"
+      title: "Unlock entirely new markets."
+      subtitle: "Manage & Monetize Data"
+    contact:
+      title: "Contact"
+      subtitle: "Send us a message regarding data flows, services, or potential collaborations."
+      name: "Your name"
+      email: "Your email address"
+      message: "Your message"
+      submit: "Send message"
+    faq:
+      intro: "Here you will find answers to frequently asked questions about our data intermediary services.<br>Can’t find what you’re looking for? Feel free to contact us, or sign in to the portal to access more comprehensive documentation and detailed information."
+  services:
+    title: "Services"
+    intro: "We support you in implementing data exchange in line with the EU Data Governance Act—structured, legally compliant, and fully controllable, from initial setup through daily operation to billing."
+    items:
+      - title: "Establish End-to-End Data Flows"
+        tagline: "Offer, discover, and monetise data — with full control"
+        bullets:
+          - "Legally secured and compliant with the Data Governance Act (DGA)"
+          - "Comprehensive documentation of data flows and agreements"
+          - "Full control for data holders; terminable at any time"
+        pricing_title: "Pricing Model"
+        pricing:
+          - "Data storage: The first 50 MB are free,<br>thereafter €10 per 10 GB per month"
+          - "Data sales: 10% transaction fee<br>(free data: free onward transfer)"
+      - title: "Secure Use of External Data Services"
+        tagline: "Integrate curated services — with built-in governance and transparency"
+        bullets:
+          - "Curated service catalogue with vetted data services"
+          - "Neutral monitoring and assurance of governance"
+          - "Transparent rules for access, usage, and traceability"
+        pricing_title: "Pricing Model"
+        pricing:
+          - "Interface security: free of charge"
+          - "Service usage billing: 20% transaction fee<br>(free services: free usage)"
+      - title: "Building the Data Economy Together"
+        tagline: "Design, implement, and expand data flows and services"
+        bullets:
+          - "Design of your use cases based on the EU Data Governance Act"
+          - "Development of trustworthy services with state-audited mechanisms"
+          - "Support from piloting through roll-out within your organisation"
+        pricing_title: "Services & Pricing"
+        pricing:
+          - "Tailored governance for data exchange"
+          - "Custom integration of services into your IT landscape"
+          - "Pricing upon request (effort-based)"
+    cta:
+      title: "Interested in a specific data flow or service?"
+      button: "Contact us"
   welcome:
     title: "Welcome to Data Intermediary!"
     alternative_signup_description: "Don't have an ID Austria or the required credential in your wallet yet?"
@@ -191,8 +263,8 @@ en:
     footer:
       imprint: "Imprint"
       imprint_url: "https://intermediary.at/imprint"
-      security: "Data security"
-      security_url: "https://intermediary.at/privacy"
+      privacy: "Privacy Policy"
+      privacy_url: "https://intermediary.at/privacy"
     messages:
       unknown: "unknown"
       invalid_input: "Invalid input"

@@ -1,4 +1,5 @@
 gem 'mini_racer'
+gem 'rack-attack'
 
 # UI
 gem 'sprockets-rails'

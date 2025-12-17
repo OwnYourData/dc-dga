@@ -49,3 +49,169 @@
     height: 80vh;
   }
 }
+
+.advantages-section {
+  background-color: #e8b351; // an das Original annähern
+}
+
+.advantages-card {
+  border-radius: 1.5rem;      // große runde Ecken wie im Screenshot
+  border: none;
+}
+
+.advantages-card .icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.75rem;
+  background-color: #f7e1b6;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.6rem;    // Icon-Größe exakt anpassen
+  line-height: 1;       // verhindert optisches Verschieben
+}
+
+.advantages-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.advantages-card-text {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #444;
+}
+
+.hero-content {
+  margin-top: 2rem;
+}
+
+.hero-new-markets {
+  position: relative;
+  min-height: 500px;
+
+  padding-top: 7rem;
+  padding-bottom: 8rem;
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  background-image: url("/assets/section5.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: #000;
+}
+
+.hero-new-markets::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.hero-new-markets .hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Typografie ähnlich Screenshot */
+.hero-new-markets .hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.hero-new-markets .hero-title {
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  margin-bottom: 1.8rem;
+}
+
+.hero-new-markets .hero-subtitle {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .hero-new-markets {
+    background-attachment: scroll;
+  }
+}
+
+.scroll-offset {
+  scroll-margin-top: 50px;
+}
+
+#services .services-bullets {
+  margin-left: 60px;  /* 44px Icon + 16px gap */
+}
+
+#services .services-row {
+  position: relative;
+}
+
+#services .services-icon {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f8f9fa; /* bg-light */
+  border: 1px solid rgba(0,0,0,0.12);
+}
+
+#services .services-header {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+#services .services-header h2 {
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  font-weight: 700;
+}
+
+#services .services-intro {
+  max-width: 720px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 992px) {
+  #services .services-row::after {
+    content: "";
+    position: absolute;
+    top: 1.25rem;
+    bottom: 1.25rem;
+    left: 58.333333%;       /* 7/12 = 58.333% */
+    width: 1px;
+    background: rgba(0,0,0,0.10);
+    transform: translateX(-0.5px);
+    pointer-events: none;
+  }
+
+  #services .services-pricing {
+    border-left: 0;
+  }
+}
+
+/* Mobile: statt vertikal eine horizontale Trennlinie */
+@media (max-width: 991.98px) {
+  #services .services-pricing {
+    border-top: 1px solid rgba(0,0,0,0.10);
+  }
+}

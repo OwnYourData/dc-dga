@@ -1,0 +1,47 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dc-dga-did
+  namespace: default
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - my.go-data.at
+        - beta.intermediary.at
+      secretName: dc-dga-did-tls
+  rules:
+    - host: my.go-data.at
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dc-dga-did
+                port:
+                  number: 80
+    - host: beta.intermediary.at
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dc-dga-did
+                port:
+                  number: 80
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: dc-dga-did-tls
+  namespace: default
+spec:
+  secretName: dc-dga-did-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - my.go-data.at
+    - beta.intermediary.at

@@ -45,13 +45,14 @@ class WelcomeController < ApplicationController
     # redirect to ID Austria Authentication
     def ida_redirect
         session_id = params[:session_id]
+        prefix = ENV['IDA_PREFIX'] || I18n.t('admin.id_austria.state_prefix')
         ida_url = I18n.t('admin.id_austria.ida_host')
         ida_url += '/auth/idp/profile/oidc/authorize'
         ida_url += '?response_type=code'
         ida_url += '&client_id=https%3A%2F%2F' + I18n.t('admin.id_austria.eid_url')
         ida_url += '&redirect_uri=https%3A%2F%2F' + I18n.t('admin.id_austria.eid_url') + '%2Fconnect'
         ida_url += '&scope=openid+profile+eid'
-        ida_url += '&state=' + I18n.t('admin.id_austria.state_prefix') + ':' + session_id.to_s
+        ida_url += '&state=' + prefix + ':' + session_id.to_s
 
         createEvent(
             bpk: nil,

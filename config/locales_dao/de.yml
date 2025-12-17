@@ -191,8 +191,8 @@ de:
     footer:
       imprint: "Impressum"
       imprint_url: "https://hinterland.systems/imprint/"
-      security: "Datenschutz"
-      security_url: "https://hinterland.systems/privacy-policy/"
+      privacy: "Datenschutz"
+      privacy_url: "https://hinterland.systems/privacy-policy/"
     messages:
       unknown: "unbekannt"
       invalid_input: "Ungültige Eingabe"

@@ -1,8 +1,30 @@
+get "/impressum",   to: redirect("/de/impressum")
+get "/datenschutz", to: redirect("/de/datenschutz")
+get "/imprint",     to: redirect("/en/imprint")
+get "/privacy",     to: redirect("/en/privacy")
+
 scope "(:locale)", :locale => /en|de/ do
     # UI ==========================
 
+    # Landing page for intermediary.at / beta.intermediary.at
+    get '/',
+        to: 'landing#home',
+        constraints: { host: /^(beta\.)?intermediary\.at$/ },
+        as: :intermediary_root
+    # Contact form
+    get  "/contact", to: "landing#new_contact",    as: :new_contact
+    post "/contact", to: "landing#create_contact", as: :create_contact    
+
+    # Landing page ----------------
+    match '/home',       to: 'landing#home',     via: 'get'
+    match 'imprint',     to: 'landing#imprint',  via: 'get'
+    match 'impressum',   to: 'landing#imprint',  via: 'get'
+    match 'privacy',     to: 'landing#privacy',  via: 'get'
+    match 'datenschutz', to: 'landing#privacy',  via: 'get'
+    match 'contact',     to: 'landing#contact',  via: 'post'
+
     # Welcome page ----------------
-    root 'welcome#start'
+    root to: 'welcome#start'
     match '/start',        to: 'welcome#start',        via: 'get'
     match '/logout',       to: 'welcome#logout',       via: 'get'
     # redirecting to ID Austria

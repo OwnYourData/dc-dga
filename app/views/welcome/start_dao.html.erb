@@ -1,0 +1,16 @@
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold text-body-emphasis" style="margin-bottom: 70px;">
+  	<%= t('welcome.title') %>
+ 	</h1>
+  <%= render 'layouts/flash' %>
+ 	<div class="row align-items-md-stretch">
+ 		<%= render 'welcome/id-austria' %>
+ 		<%= render 'welcome/wallet' %>
+ 	</div>
+  <div class="text-center mt-4">
+    <p>
+      <%= t('welcome.alternative_signup_description') %><br>
+      <%= link_to t('welcome.alternative_signup_link'), user_request_path, class: 'fw-bold link-primary' %>
+    </p>
+  </div> 	
+</div>

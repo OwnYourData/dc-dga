@@ -1,16 +1,16 @@
 USE_CASES = {
-  'eeg_altruism' =>
-      { title: 'EEG Altruism',
-        D2A_schema: 'D2Aeeg',
-        d2a_edit: 'd2a_edit',
-        d2a_transform: 'D2Aeeg',
-        D3A_schema: 'D3Aeeg',
-        d3a_edit: 'd3a_edit',
-        da_reasoner: 'OntologyEEG',
-        contract_transfrom: 'EegConsentForm',
-        contract_schema: 'EegConsentForm',
-        consent_schema: 'EEGconsent',
-        consent_tranform: 'EEGconsent' },
+  # 'eeg_altruism' =>
+  #     { title: 'EEG Altruism',
+  #       D2A_schema: 'D2Aeeg',
+  #       d2a_edit: 'd2a_edit',
+  #       d2a_transform: 'D2Aeeg',
+  #       D3A_schema: 'D3Aeeg',
+  #       d3a_edit: 'd3a_edit',
+  #       da_reasoner: 'OntologyEEG',
+  #       contract_transfrom: 'EegConsentForm',
+  #       contract_schema: 'EegConsentForm',
+  #       consent_schema: 'EEGconsent',
+  #       consent_tranform: 'EEGconsent' },
   'api_sharing' =>
       { title: 'API Sharing',
         D2A_schema: 'D2AapiSharing',

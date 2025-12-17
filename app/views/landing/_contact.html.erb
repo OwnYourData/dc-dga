@@ -1,0 +1,49 @@
+<section id="contact" class="advantages-section py-5 w-100 scroll-offset">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h2 class="fw-bold mb-3"><%= t("landing.contact.title") %></h2>
+        <p class="text-muted mb-4">
+          <%= t("landing.contact.subtitle") %>
+        </p>
+
+        <%= form_with model: @contact_request,
+                      url: create_contact_path,
+                      local: true,
+                      class: "card p-4 shadow-sm border-0 rounded-4" do |f| %>
+
+          <% if @contact_request&.errors&.any? %>
+            <div class="alert alert-danger">
+              <ul class="mb-0">
+                <% @contact_request.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="mb-3">
+            <%= f.label :name, t('landing.contact.name'), class: "form-label" %>
+            <%= f.text_field :name, class: "form-control", required: true %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :email, t('landing.contact.email'), class: "form-label" %>
+            <%= f.email_field :email, class: "form-control", required: true %>
+          </div>
+          <div class="mb-3">
+            <%= f.label :message, t('landing.contact.message'), class: "form-label" %>
+            <%= f.text_area :message, class: "form-control", rows: 4, required: true %>
+          </div>
+          <div class="d-none">
+            <%= f.label :honeypot, "Weiteres Feld", class: "form-label" %>
+            <%= f.text_field :honeypot,
+                  autocomplete: "off",
+                  tabindex: "-1",
+                  aria: { hidden: true },
+                  class: "form-control" %>
+          </div>
+          <%= f.submit t('landing.contact.submit'), class: "btn btn-dark btn-lg mt-3" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

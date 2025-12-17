@@ -1,0 +1,129 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dc-dga-projects
+  namespace: did
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dc-dga-projects
+  template:
+    metadata:
+      name: dc-dga-projects
+      labels:
+        app: dc-dga-projects
+    spec:
+      containers:
+      - name: dc-dga-projects
+        image: ghcr.io/oyd-private/dc-dga:latest
+        ports:
+        - containerPort: 3000
+        env:
+          - name: LANG
+            value: C.UTF-8
+          - name: RAILS_LOG_TO_STDOUT
+            value: "TRUE"
+          - name: RAILS_SERVE_STATIC_FILES
+            value: "TRUE"
+          - name: RAILS_ENV
+            value: production
+          - name: AUTH
+            value: "TRUE"
+          - name: DC_DB
+            value: kubernetes
+          - name: DB2_HOST
+            value: pgcluster.db.svc.cluster.local
+          - name: DB2_NAME
+            value: did-projects
+          - name: DB2_USER
+            value: postgres
+          - name: POSTGRES2_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pgcluster-secret
+                key: superUserPassword
+          - name: RAILS_CONFIG_HOSTS
+            value: "projects.go-data.at"
+          - name: DEFAULT_DID_OAUTH_APP
+            value: oydid
+          - name: DEFAULT_VC_OAUTH_APP
+            value: oydid-vc
+          - name: ISSUER_DID
+            value: 'did:jwk:eyJjcnYiOiJQLTI1NiIsImt0eSI6IkVDIiwieCI6IlRUQzc3dnZ2VFEyQll6dUYwc1MwTjFWVXpyclc1bno2N0FIN01aVUJ2cTgiLCJ5IjoiVEVSRW9kdEJlSWZtTC1QcXZmMndjQURtYnJpcG42LTdPSmd1WUQ3NGNJNCJ9'
+          - name: ISSUER_PWD
+            valueFrom:
+              secretKeyRef:
+                name: dc-dga-projects-secrets
+                key: issuer-passwd
+          - name: ADMIN_PRIVATEKEY
+            valueFrom:
+              secretKeyRef:
+                name: dc-dga-projects-secrets
+                key: sk-encoded
+          - name: DID_FLEXCO_DID
+            value: 'did:oyd:zQmVA13jzHxbjYntRpRezGmUiYzkbvGmiWB83E1dqmTQ1h3'
+          - name: DOC_PWD
+            value: 'doc_pwd'
+          - name: REV_PWD
+            value: 'rev_pwd'
+      imagePullSecrets:
+      - name: ghcr-credentials
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: dc-dga-projects
+  namespace: did
+spec:
+  selector:
+    app: dc-dga-projects
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dc-dga-projects
+  namespace: did
+  annotations:
+    certmanager.io/issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: "nginx"
+  tls:
+  - hosts:
+    - projects.go-data.at
+    secretName: dc-dga-projects-tls
+  rules:
+  - host: projects.go-data.at
+    http:
+      paths:
+      - path: /
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: dc-dga-projects
+            port:
+              number: 80
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: dc-dga-projects-tls
+  namespace: did
+  annotations:
+    cert-manager.io/issuer: "letsencrypt-prod"
+spec:
+  secretName: dc-dga-projects-tls
+  issuerRef:
+    group: cert-manager.io
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+  - 'projects.go-data.at'
+  privateKey:
+    rotationPolicy: Always

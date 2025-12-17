@@ -1,0 +1,63 @@
+<section class="advantages-section py-5 w-100 scroll-offset" id="advantages">
+  <div class="container">
+    <div class="mb-4">
+      <div class="advantages-card-title fw-bold small mb-1">
+        <%= t("landing.what_is_did") %>
+      </div>
+      <p class="advantages-card-text mb-0">
+        <%= t("landing.what_is_did_desc") %>
+      </p>
+    </div>
+    <div class="text-uppercase small fw-bold mb-3" style="letter-spacing: 2px; font-size: 1.2rem;">
+      <%= t("landing.advantages_title") %>
+    </div>
+
+    <div class="row g-4">
+      <!-- Karte 1: Provide Data -->
+      <div class="col-lg-4">
+        <div class="card advantages-card h-100 shadow-sm">
+          <div class="card-body p-4">
+            <div class="icon-wrapper mb-3">
+              <i class="bi bi-arrows-fullscreen"></i>
+            </div>
+            <h3 class="advantages-card-title h5 fw-semibold mb-2"><%= t("landing.advantage.provide_title") %></h3>
+            <p class="advantages-card-text mb-0 small">
+              <%= t("landing.advantage.provide_desc") %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card advantages-card h-100 shadow-sm">
+          <div class="card-body p-4">
+            <div class="icon-wrapper mb-3">
+              <!-- Beispiel-Icon: Pfeile / Suche -->
+              <i class="bi-crosshair"></i>
+            </div>
+            <h3 class="advantages-card-title h5 fw-semibold mb-2"><%= t("landing.advantage.find_title") %></h3>
+            <p class="advantages-card-text mb-0 small">
+              <%= t("landing.advantage.find_desc") %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card advantages-card h-100 shadow-sm">
+          <div class="card-body p-4">
+            <div class="icon-wrapper mb-3">
+              <!-- Beispiel-Icon: Kreispfeil / Recycling -->
+              <i class="bi-arrow-repeat"></i>
+            </div>
+            <h3 class="advantages-card-title h5 fw-semibold mb-2"><%= t("landing.advantage.utilize_title") %></h3>
+            <p class="advantages-card-text mb-0 small">
+              <%= t("landing.advantage.utilize_desc") %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

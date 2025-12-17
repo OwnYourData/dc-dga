@@ -1,0 +1,21 @@
+<div class="container">
+  <section class="py-5">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-semibold mt-2"><%= t("landing.title").html_safe %></h1>
+        <p class="lead text-secondary mt-3"><%= t("landing.subtitle").html_safe %></p>
+
+        <div class="d-flex flex-column flex-sm-row gap-2 mt-4">
+          <%= link_to t("landing.cta_primary"), 
+              'https://' + ENV['RAILS_CONFIG_HOSTS'] + '/' + I18n.locale.to_s, 
+              class: "btn btn-dark btn-lg" %>
+          <a href="#advantages" class="btn btn-outline-secondary btn-lg"><%= t("landing.cta_secondary") %></a>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <%= image_tag('hero.jpeg') %>
+      </div>
+    </div>
+  </section>
+</div>

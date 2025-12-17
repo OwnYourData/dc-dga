@@ -1,4 +1,76 @@
 de:
+  landing:
+    title: "Das Datenökosystem<br>der Zukunft"
+    subtitle: "Strukturiertes Datenmanagement mit einem Daten-Intermediär<br>schafft die Grundlage für effizienten Datenaustausch"
+    cta_primary: "Jetzt registrieren"
+    cta_secondary: "Mehr erfahren"
+    what_is_did: "Was ist ein Datenintermediär?"
+    what_is_did_desc: "Ein Datenintermediär ist eine juristische Person, die als neutraler Vermittler zwischen Datenanbietern und Datennutzern fungiert. Seine Hauptaufgabe besteht darin, den Austausch von Daten zu erleichtern."
+    advantages_title: "Was sind die Vorteile?"
+    privacy_link: "https://intermediary.at/datenschutz"
+    menu:
+      advantages: "Vorteile"
+      services: "Leistungen"
+      contact: "Kontakt"
+      faq: "Häufige Fragen"
+    advantage:
+      provide_title: "Daten bereitstellen"
+      provide_desc: "Stellen Sie Ihre Daten sicher und effizient über unsere Plattform bereit und erreichen Sie eine große Zahl potenzieller Nutzer oder Käufer. Nutzen Sie unsere fortschrittlichen Werkzeuge und Services, um den maximalen Wert aus Ihren Daten zu schöpfen."
+      find_title: "Daten finden"
+      find_desc: "Finden Sie schnell und einfach die Daten, die Sie für Ihr Projekt benötigen – dank unserer Plattform, die eine breite Auswahl hochwertiger Datensätze bietet. Nutzen Sie unsere intelligenten Suchfunktionen, um genau jene Daten zu entdecken, die Ihren Anforderungen entsprechen."
+      utilize_title: "Daten nutzen"
+      utilize_desc: "Nutzen Sie das Potenzial von Daten, um fundierte Entscheidungen zu treffen und innovative Lösungen zu entwickeln. Durch den gezielten Einsatz unserer Datenbasis können Sie Ihre strategischen Entscheidungen optimieren und nachhaltigen Erfolg sichern."
+    hero:
+      kicker: "Neue Möglichkeiten"
+      title: "Erschließen Sie völlig neue Märkte."
+      subtitle: "Daten managen & monetarisieren"
+    contact:
+      title: "Kontakt"
+      subtitle: "Schreiben Sie uns eine Nachricht zu Datenflüssen, Services oder Kooperationen."
+      name: "Ihr Name"
+      email: "Ihre E-Mail"
+      message: "Ihre Nachricht"
+      submit: "Nachricht senden"
+    faq:
+      intro: "Finden Sie hier Antworten auf häufige Fragen rund um unsere Datenintermediär-Services.<br>Ihre Frage ist nicht dabei? Kontaktieren Sie uns gerne – oder melden Sie sich im Portal an, um auf weiterführende Dokumentation und detaillierte Informationen zuzugreifen."
+  services:
+    title: "Leistungen"
+    intro: "Wir unterstützen Sie dabei, Datenaustausch anhand des EU Data Governance Acts strukturiert, rechtssicher und kontrollierbar umzusetzen – von der Einrichtung über den Betrieb bis zur Abrechnung."
+    items:
+      - title: "Ende-zu-Ende Datenflüsse etablieren"
+        tagline: "Daten anbieten, finden und monetarisieren – mit voller Kontrolle"
+        bullets:
+          - "Juristisch abgesichert und DGA-konform"
+          - "Lückenlose Dokumentation der Datenflüsse und Vereinbarungen"
+          - "Volle Kontrolle für Dateninhaber; jederzeit beendbar"
+        pricing_title: "Preismodell"
+        pricing:
+          - "Daten speichern: Die ersten 50 MB sind frei,<br>danach €10 pro 10 GB und Monat"
+          - "Daten verkaufen: 10% Transaktionsgebühr<br>(kostenlose Daten: kostenlose Weitergabe)"
+      - title: "Externe Datendienste sicher nutzen"
+        tagline: "Kuratierte Services integrieren – Governance und Transparenz inklusive"
+        bullets:
+          - "Kuratierter Servicekatalog mit geprüften Datendiensten"
+          - "Neutrale Überwachung und Sicherstellung von Governance"
+          - "Transparente Regeln für Zugriff, Nutzung und Nachvollziehbarkeit"
+        pricing_title: "Preismodell"
+        pricing:
+          - "Schnittstellen absichern: kostenlos"
+          - "Abrechnung der Servicenutzung: 20% Transaktionsgebühr<br>(kostenlose Services: kostenlose Nutzung)"
+      - title: "Datenökonomie gemeinsam aufbauen"
+        tagline: "Datenflüsse und Services planen, umsetzen und erweitern"
+        bullets:
+          - "Konzeption Ihrer Use-Cases auf Basis des EU Data Governance Acts"
+          - "Aufbau vertrauenswürdiger Services mit staatlich auditierten Mechanismen"
+          - "Begleitung von Pilotierung bis Roll-out in Ihre Organisation"
+        pricing_title: "Leistungen & Preise"
+        pricing:
+          - "Maßgeschneiderte Governance für den Datenaustausch"
+          - "Individuelle Integration von Diensten in Ihre IT-Landschaft"
+          - "Preise auf Anfrage (nach Aufwand)"
+    cta:
+      title: "Interesse an einem konkreten Datenfluss oder Service?"
+      button: "Kontakt aufnehmen"
   welcome:
     title: "Willkommen beim Datenintermediär!"
     alternative_signup_description: "Sie haben keine ID Austria oder noch nicht den erforderlichen Berechtigungsnachweis in Ihrer Wallet?"
@@ -191,8 +263,8 @@ de:
     footer:
       imprint: "Impressum"
       imprint_url: "https://intermediary.at/impressum"
-      security: "Datenschutz"
-      security_url: "https://intermediary.at/datenschutz"
+      privacy: "Datenschutz"
+      privacy_url: "https://intermediary.at/datenschutz"
     messages:
       unknown: "unbekannt"
       invalid_input: "Ungültige Eingabe"

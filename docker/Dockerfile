@@ -30,6 +30,6 @@ ENV BROWSER_PATH=/usr/bin/chromium
 COPY . .
 RUN mv public/index.html public/databud.html
 
-CMD ["./script/init.sh"]
+CMD ["./script/init_dao.sh"]
 
 EXPOSE 3000

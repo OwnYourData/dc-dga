@@ -1,78 +1,6 @@
 en:
-  landing:
-    title: "The Data Ecosystem<br>of the Future"
-    subtitle: "Structured data management with a data intermediary<br>creates the basis for efficient data exchange"
-    cta_primary: "Register Now"
-    cta_secondary: "Learn More"
-    what_is_did: "What is a Data Intermediary?"
-    what_is_did_desc: "A data intermediary is a legal entity that acts as a mediator between data providers and data users. Its main task is to facilitate the exchange of data."
-    advantages_title: "What are the advantages?"
-    privacy_link: "https://intermediary.at/privacy"
-    menu:
-      advantages: "Advantages"
-      services: "Services"
-      contact: "Contact"
-      faq: "FAQ"
-    advantage:
-      provide_title: "Provide Data"
-      provide_desc: "Offer your data securely and efficiently through our platform and reach a wide range of potential buyers. Use our advanced tools and services to extract maximum value from your data."
-      find_title: "Find Data"
-      find_desc: "Quickly and easily find the data you need for your project on our platform, which offers a wide range of high-quality datasets. Take advantage of our intelligent search functions to discover exactly the data that meets your requirements."
-      utilize_title: "Utilise Data"
-      utilize_desc: "Utilise the potential of data to make well-founded decisions and develop pioneering solutions. By making targeted use of our database, you can optimise your strategic decisions and ensure sustainable success."
-    hero:
-      kicker: "New Opportunities"
-      title: "Unlock entirely new markets."
-      subtitle: "Manage & Monetize Data"
-    contact:
-      title: "Contact"
-      subtitle: "Send us a message regarding data flows, services, or potential collaborations."
-      name: "Your name"
-      email: "Your email address"
-      message: "Your message"
-      submit: "Send message"
-    faq:
-      intro: "Here you will find answers to frequently asked questions about our data intermediary services.<br>Can’t find what you’re looking for? Feel free to contact us, or sign in to the portal to access more comprehensive documentation and detailed information."
-  services:
-    title: "Services"
-    intro: "We support you in implementing data exchange in line with the EU Data Governance Act—structured, legally compliant, and fully controllable, from initial setup through daily operation to billing."
-    items:
-      - title: "Establish End-to-End Data Flows"
-        tagline: "Offer, discover, and monetise data — with full control"
-        bullets:
-          - "Legally secured and compliant with the Data Governance Act (DGA)"
-          - "Comprehensive documentation of data flows and agreements"
-          - "Full control for data holders; terminable at any time"
-        pricing_title: "Pricing Model"
-        pricing:
-          - "Data storage: The first 50 MB are free,<br>thereafter €10 per 10 GB per month"
-          - "Data sales: 10% transaction fee<br>(free data: free onward transfer)"
-      - title: "Secure Use of External Data Services"
-        tagline: "Integrate curated services — with built-in governance and transparency"
-        bullets:
-          - "Curated service catalogue with vetted data services"
-          - "Neutral monitoring and assurance of governance"
-          - "Transparent rules for access, usage, and traceability"
-        pricing_title: "Pricing Model"
-        pricing:
-          - "Interface security: free of charge"
-          - "Service usage billing: 20% transaction fee<br>(free services: free usage)"
-      - title: "Building the Data Economy Together"
-        tagline: "Design, implement, and expand data flows and services"
-        bullets:
-          - "Design of your use cases based on the EU Data Governance Act"
-          - "Development of trustworthy services with state-audited mechanisms"
-          - "Support from piloting through roll-out within your organisation"
-        pricing_title: "Services & Pricing"
-        pricing:
-          - "Tailored governance for data exchange"
-          - "Custom integration of services into your IT landscape"
-          - "Pricing upon request (effort-based)"
-    cta:
-      title: "Interested in a specific data flow or service?"
-      button: "Contact us"
   welcome:
-    title: "Welcome to Data Intermediary!"
+    title: "Welcome to Hinterland Systems!"
     alternative_signup_description: "Don't have an ID Austria or the required credential in your wallet yet?"
     alternative_signup_link: "Please complete the following form for alternative access."
     ida:
@@ -82,15 +10,15 @@ en:
       signup_hint: "how does it work?"
     wallet:
       signup_title: "Login with wallet"
-      signup_description: "Use your mobile wallet app to log in to the data intermediary in a privacy-friendly and decentralised manner. Simply scan the QR code and confirm your login."
+      signup_description: "Use your mobile wallet app to log in to the Hinterland Registry in a privacy-friendly and decentralised manner. Simply scan the QR code and confirm your login."
       signup_wallet_link: "open in wallet"
       signup_wallet_download: "Download the Sphereon Wallet here:"
-    join_heading: "Join Data Intermediary!"
-    join_intro: "To log into the Data Intermediary add the necessary credential to your wallet."
+    join_heading: "Join Hinterland Systems!"
+    join_intro: "To log into the Hinterland Registry, add the necessary credential to your wallet."
     join_back: "<a href='/en/start'>Click here</a> to return to the start page."
     email_sent: "Thank you for your enquiry! A member of staff will contact you shortly at the email address provided with further information."
   asset:
-    new_asset_button: "Initiate Data Exchange "
+    new_asset_button: "Initiate Data Exchange"
     msg_saved: "Record saved."
     msg_record_deleted: "Draft deleted."
     msg_signed: "The entry has been successfully made available in the data catalogue."
@@ -109,14 +37,14 @@ en:
     description_header: "Description"
     msg_record_deleted: "The contract was removed from the list."
   log:
-    time_header: Timestamp
-    event_header: Event
-    details_header: Details
+    time_header: "Timestamp"
+    event_header: "Event"
+    details_header: "Details"
   user_request:
     intro: "If you are unable to log in with ID Austria, please fill out the following form. Once your details have been verified, you will receive an email containing a link that will store a digital access ticket (credential) directly in your wallet. You can then use this credential to log in."
-    name_label: Name
+    name_label: "Name"
     email_label: "Email"
-    note_label: Note
+    note_label: "Note"
     reference_label: "Reference contact"
     reference_info: "Email address of an existing user who can vouch for you"
   info:
@@ -149,8 +77,8 @@ en:
     sd_service_provider_tab: "for Service Provider"
     payment_tab: "Payment Details"
   general:
-    time_header: Timestamp
-    details_header: Details    
+    time_header: "Timestamp"
+    details_header: "Details"
     show_entry_hint: "Show record"
   menu:
     asset: "My Drafts"
@@ -158,10 +86,10 @@ en:
     service: "Service Catalogue"
     contract: "My Contracts"
     log: "Logs"
-    help: Help
+    help: "Help"
     help_title: "Information Centre"
-    profile: Profile
-    settings: Settings
+    profile: "Profile"
+    settings: "Settings"
     logout: "Sign out"
   sign:
     progress: "Signing preparation in progress..."
@@ -180,7 +108,7 @@ en:
         body_text: |
           Hello %{name},
 
-          You provided the email address %{email} to the data intermediary DID FlexCo.
+          You provided the email address %{email} to the data network Hinterland Systems.
           To make sure you have access to this address, please complete the verification.
 
           Please click this link:
@@ -191,19 +119,18 @@ en:
 
           Thank you for your cooperation!
 
-          Best regards,
-          Your DID FlexCo team
+          Kind regards on behalf of the Board of the Hinterland Systems Association
         body_html: |
           <p>Hello %{name},</p>
-          <p>You provided the email address %{email} to the data intermediary
-          DID FlexCo. To ensure you have access to this address, please complete the verification.</p>
+          <p>You provided the email address %{email} to the data network Hinterland Systems.
+          To ensure you have access to this address, please complete the verification.</p>
           <p>Please click this link:<br>
-          <a href="%{link}">%{link}</a></p>
+          <a href=\"%{link}\">%{link}</a></p>
           <p>For security reasons, this link is valid for 24 hours only.<br>
           If you didn’t request this change, please ignore this message.</p>
           <p>Thank you for your cooperation!</p>
-          <p>Best regards<br>
-          Your DID FlexCo team</p>
+          <p>Kind regards<br>
+          on behalf of the Board of the Hinterland Systems Association</p>
       external_user:
         subject: "Approve new user"
         body_text: |
@@ -242,35 +169,35 @@ en:
       failed: "The record validation has failed."
   admin:
     lang:
-      english: English
-      german: Deutsch
+      english: "English"
+      german: "Deutsch"
     color_mode:
-      light: Light
-      dark: Dark
-      auto: Auto
+      light: "Light"
+      dark: "Dark"
+      auto: "Auto"
     id_austria:
-      eid_url: "idaustria.intermediary.at"
+      eid_url: "ida.hinterland.systems"
       ida_host: "https://eid.oesterreich.gv.at"
-      state_prefix: dida
+      state_prefix: "hsys"
     images:
-      logo_light: "did.png"
-      logo_dark: "did-dark.png"
-      logo_alt: "DID Logo"
+      logo_light: "hs.png"
+      logo_dark: "hs-dark.png"
+      logo_alt: "Hinterland Systems Logo"
     header:
-      title: "DID Daten-Intermediär-Dienste FlexCo"
-      title2: "Daten-Intermediär-Dienste FlexCo"
-      title_short: "Intermediary"
+      title: "Hinterland Registry"
+      title2: "Hinterland Registry"
+      title_short: "Hinterland Registry"
     footer:
       imprint: "Imprint"
-      imprint_url: "https://intermediary.at/imprint"
+      imprint_url: "https://hinterland.systems/imprint/"
       privacy: "Privacy Policy"
-      privacy_url: "https://intermediary.at/privacy"
+      privacy_url: "https://hinterland.systems/privacy-policy/"
     messages:
       unknown: "unknown"
       invalid_input: "Invalid input"
       authenticate: "Please authenticate first!"
       error_login: "An error occurred during authentication."
-      provide_email: "Please complete your profile and provide an email address. [<a href='/en/settings'>open profile</a>]"
+      provide_email: "Please complete your profile and provide an email address."
       invalid_email: "The email address you entered is invalid. Please check your input."
       email_error: "An error occurred while sending the email. Please try again later."
       email_sent: "The verification email has been sent successfully."
@@ -278,6 +205,24 @@ en:
       expired_email_token: "The email verification link has expired. Please request a new one."
       email_verified: "Your email address has been successfully verified."
       email_verification_failed: "The email address could not be verified. Please try again."
-      connect_wallet: "Please complete your profile and connect with a wallet. [<a href='/en/settings'>open profile</a>]"
+      connect_wallet: "Please complete your profile and connect with a wallet."
       reconnect_wallet: "Please reconnect your profile with a wallet."
       operation_canceled: "The operation could not be completed."
+  time:
+    formats:
+      long: "%d.%m.%Y %H:%M"
+  date:
+    month_names:
+      - "~"
+      - "January"
+      - "February"
+      - "March"
+      - "April"
+      - "May"
+      - "June"
+      - "July"
+      - "August"
+      - "September"
+      - "October"
+      - "November"
+      - "December"

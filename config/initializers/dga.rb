@@ -1,6 +1,6 @@
-ISSUER_HOST = 'https://my.go-data.at'
+ISSUER_HOST = 'https://my.hinterland.systems'
 CREDENTIAL_DID_PATH = "/didfc"
-CREDENTIAL_DID_TYPE = "DID-FlexCo Credential"
+CREDENTIAL_DID_TYPE = "Hinterland Systems Credential"
 AUTH_REQUEST_URI  = '/wallet/auth-requests/'
 AUTH_RESPONSE_URI = '/wallet/auth-responses/'
 

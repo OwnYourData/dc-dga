@@ -1,8 +1,7 @@
 #!/bin/bash
 
-REGISTRY="ghcr.io"
-CONTAINER="dc-dga"
-REPOSITORY="oyd-private"
+CONTAINER="dc-dao"
+REPOSITORY="oydeu"
 TAG="latest"
 
 # read commandline options
@@ -44,11 +43,11 @@ while [ $# -gt 0 ]; do
 done
 
 if $BUILD_CLEAN; then
-    docker build --platform $PLATFORM --no-cache -f $DOCKERFILE -t $REGISTRY/$REPOSITORY/$CONTAINER:$TAG .
+    docker build --platform $PLATFORM --no-cache -f $DOCKERFILE -t $REPOSITORY/$CONTAINER:$TAG .
 else
-    docker build --platform $PLATFORM -f $DOCKERFILE -t $REGISTRY/$REPOSITORY/$CONTAINER:$TAG .
+    docker build --platform $PLATFORM -f $DOCKERFILE -t $REPOSITORY/$CONTAINER:$TAG .
 fi
 
 if $DOCKER_UPDATE; then
-    docker push $REGISTRY/$REPOSITORY/$CONTAINER:$TAG
+    docker push $REPOSITORY/$CONTAINER:$TAG
 fi

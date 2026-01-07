@@ -1,78 +1,6 @@
 de:
-  landing:
-    title: "Das Datenökosystem<br>der Zukunft"
-    subtitle: "Strukturiertes Datenmanagement mit einem Daten-Intermediär<br>schafft die Grundlage für effizienten Datenaustausch"
-    cta_primary: "Jetzt registrieren"
-    cta_secondary: "Mehr erfahren"
-    what_is_did: "Was ist ein Datenintermediär?"
-    what_is_did_desc: "Ein Datenintermediär ist eine juristische Person, die als neutraler Vermittler zwischen Datenanbietern und Datennutzern fungiert. Seine Hauptaufgabe besteht darin, den Austausch von Daten zu erleichtern."
-    advantages_title: "Was sind die Vorteile?"
-    privacy_link: "https://intermediary.at/datenschutz"
-    menu:
-      advantages: "Vorteile"
-      services: "Leistungen"
-      contact: "Kontakt"
-      faq: "Häufige Fragen"
-    advantage:
-      provide_title: "Daten bereitstellen"
-      provide_desc: "Stellen Sie Ihre Daten sicher und effizient über unsere Plattform bereit und erreichen Sie eine große Zahl potenzieller Nutzer oder Käufer. Nutzen Sie unsere fortschrittlichen Werkzeuge und Services, um den maximalen Wert aus Ihren Daten zu schöpfen."
-      find_title: "Daten finden"
-      find_desc: "Finden Sie schnell und einfach die Daten, die Sie für Ihr Projekt benötigen – dank unserer Plattform, die eine breite Auswahl hochwertiger Datensätze bietet. Nutzen Sie unsere intelligenten Suchfunktionen, um genau jene Daten zu entdecken, die Ihren Anforderungen entsprechen."
-      utilize_title: "Daten nutzen"
-      utilize_desc: "Nutzen Sie das Potenzial von Daten, um fundierte Entscheidungen zu treffen und innovative Lösungen zu entwickeln. Durch den gezielten Einsatz unserer Datenbasis können Sie Ihre strategischen Entscheidungen optimieren und nachhaltigen Erfolg sichern."
-    hero:
-      kicker: "Neue Möglichkeiten"
-      title: "Erschließen Sie völlig neue Märkte."
-      subtitle: "Daten managen & monetarisieren"
-    contact:
-      title: "Kontakt"
-      subtitle: "Schreiben Sie uns eine Nachricht zu Datenflüssen, Services oder Kooperationen."
-      name: "Ihr Name"
-      email: "Ihre E-Mail"
-      message: "Ihre Nachricht"
-      submit: "Nachricht senden"
-    faq:
-      intro: "Finden Sie hier Antworten auf häufige Fragen rund um unsere Datenintermediär-Services.<br>Ihre Frage ist nicht dabei? Kontaktieren Sie uns gerne – oder melden Sie sich im Portal an, um auf weiterführende Dokumentation und detaillierte Informationen zuzugreifen."
-  services:
-    title: "Leistungen"
-    intro: "Wir unterstützen Sie dabei, Datenaustausch anhand des EU Data Governance Acts strukturiert, rechtssicher und kontrollierbar umzusetzen – von der Einrichtung über den Betrieb bis zur Abrechnung."
-    items:
-      - title: "Ende-zu-Ende Datenflüsse etablieren"
-        tagline: "Daten anbieten, finden und monetarisieren – mit voller Kontrolle"
-        bullets:
-          - "Juristisch abgesichert und DGA-konform"
-          - "Lückenlose Dokumentation der Datenflüsse und Vereinbarungen"
-          - "Volle Kontrolle für Dateninhaber; jederzeit beendbar"
-        pricing_title: "Preismodell"
-        pricing:
-          - "Daten speichern: Die ersten 50 MB sind frei,<br>danach €10 pro 10 GB und Monat"
-          - "Daten verkaufen: 10% Transaktionsgebühr<br>(kostenlose Daten: kostenlose Weitergabe)"
-      - title: "Externe Datendienste sicher nutzen"
-        tagline: "Kuratierte Services integrieren – Governance und Transparenz inklusive"
-        bullets:
-          - "Kuratierter Servicekatalog mit geprüften Datendiensten"
-          - "Neutrale Überwachung und Sicherstellung von Governance"
-          - "Transparente Regeln für Zugriff, Nutzung und Nachvollziehbarkeit"
-        pricing_title: "Preismodell"
-        pricing:
-          - "Schnittstellen absichern: kostenlos"
-          - "Abrechnung der Servicenutzung: 20% Transaktionsgebühr<br>(kostenlose Services: kostenlose Nutzung)"
-      - title: "Datenökonomie gemeinsam aufbauen"
-        tagline: "Datenflüsse und Services planen, umsetzen und erweitern"
-        bullets:
-          - "Konzeption Ihrer Use-Cases auf Basis des EU Data Governance Acts"
-          - "Aufbau vertrauenswürdiger Services mit staatlich auditierten Mechanismen"
-          - "Begleitung von Pilotierung bis Roll-out in Ihre Organisation"
-        pricing_title: "Leistungen & Preise"
-        pricing:
-          - "Maßgeschneiderte Governance für den Datenaustausch"
-          - "Individuelle Integration von Diensten in Ihre IT-Landschaft"
-          - "Preise auf Anfrage (nach Aufwand)"
-    cta:
-      title: "Interesse an einem konkreten Datenfluss oder Service?"
-      button: "Kontakt aufnehmen"
   welcome:
-    title: "Willkommen beim Datenintermediär!"
+    title: "Willkommen bei Hinterland Systems!"
     alternative_signup_description: "Sie haben keine ID Austria oder noch nicht den erforderlichen Berechtigungsnachweis in Ihrer Wallet?"
     alternative_signup_link: "Füllen Sie das folgende Formular für einen alternativen Zugang aus."
     ida:
@@ -82,7 +10,7 @@ de:
       signup_hint: "wie funktioniert das?"
     wallet:
       signup_title: "Anmeldung mit Wallet"
-      signup_description: "Nutzen Sie Ihre mobile Wallet-App, um sich datenschutzfreundlich und dezentral beim Datenintermediär anzumelden. Einfach QR-Code scannen und Anmeldung bestätigen."
+      signup_description: "Nutzen Sie Ihre mobile Wallet-App, um sich datenschutzfreundlich und dezentral bei Hinterland Systems anzumelden. Einfach QR-Code scannen und Anmeldung bestätigen."
       signup_wallet_link: "im Wallet öffnen"
       signup_wallet_download: "Laden Sie jetzt die Sphereon Wallet herunter:"
     join_heading: "Machen Sie mit beim Datenintermediär!"
@@ -109,19 +37,19 @@ de:
     description_header: "Beschreibung"
     msg_record_deleted: "Der Vertrag wurde aus der Liste entfernt."
   log:
-    time_header: Zeit
-    event_header: Ereignis
-    details_header: Details
+    time_header: "Zeit"
+    event_header: "Ereignis"
+    details_header: "Details"
   user_request:
     intro: "Falls Sie sich nicht mit ID Austria anmelden können oder möchten, füllen Sie bitte das folgende Formular aus. Nach erfolgreicher Prüfung erhalten Sie ein E-Mail mit einem Link, über den ein digitales Zugangsticket (Credential) direkt in Ihrem Wallet abgelegt wird. Mit diesem Credential können Sie sich anschließend einloggen."
-    name_label: Name
+    name_label: "Name"
     email_label: "E-Mail"
-    note_label: Kommentar
+    note_label: "Kommentar"
     reference_label: "Referenz-Kontakt"
     reference_info: "E-Mail eines bestehenden Nutzers, der für Sie bürgen kann"
   info:
     heading: "Willkommen %{name}!"
-    intro: "Schön, dass Sie an unserem Datenökosystem teilnehmen! Nachfolgend finden Sie Informationen und Links, um unseren Dienst optimal zu nutzen."
+    intro: "Schön, dass Sie an unserem Datennetzwerk teilnehmen! Nachfolgend finden Sie Informationen und Links, um unseren Dienst optimal zu nutzen."
     more_questions_html: "Weitere Fragen? In unseren %{link} finden Sie Antworten auf die wichtigsten Themen."
     faq_link_text: "häufig gestellten Fragen"
     faq_header: "Häufig gestellte Fragen"
@@ -141,7 +69,7 @@ de:
     connect_wallet: "mit Wallet verbinden"
     id_austria_wallet_expiry: "Ihre ID Austria Daten sind im Wallet abgelegt und müssen spätestens am %{date} erneuert werden"
     scan_qr_code: "Scanne QR Code"
-    scan_qr_code_instructions: "Scannen Sie den QR-Code mit Ihrer Wallet, um Ihre DID zu verknüpfen."
+    scan_qr_code_instructions: "Scanne den QR-Code mit deiner Wallet, um deine DID zu verknüpfen."
     identity_tab: "Identität"
     sd_tab: "Selbstauskunft"
     sd_data_consumer_tab: "für Daten-Anbieter"
@@ -149,8 +77,8 @@ de:
     sd_service_provider_tab: "für Service-Anbieter"
     payment_tab: "Zahlungsdaten"
   general:
-    time_header: Zeit
-    details_header: Details  
+    time_header: "Zeit"
+    details_header: "Details"
     show_entry_hint: "Eintrag anzeigen"
   menu:
     asset: "Meine Entwürfe"
@@ -158,13 +86,13 @@ de:
     service: "Servicekatalog"
     contract: "Meine Verträge"
     log: "Logs"
-    help: Informationen
-    help_title: Informationen
-    profile: Profil
-    settings: Einstellungen
-    logout: Ausloggen
+    help: "Informationen"
+    help_title: "Informationen"
+    profile: "Profil"
+    settings: "Einstellungen"
+    logout: "Ausloggen"
   sign:
-    progress: "Vorbereitung der Unterzeichnung läuft..."
+    progress: "Vorbereitung der Unterzeichnung läuft."
     sd_header: "Selbstauskunft unterschreiben"
     sd_description: "Führen Sie eine der beiden Optionen zum Unterzeichnen der Selbstauskunft für Datenanbieter aus:"
     sign_ida: "Unterschreiben mit ID Austria"
@@ -180,7 +108,7 @@ de:
         body_text: |
           Guten Tag %{name},
 
-          Sie haben beim Datenintermediär DID FlexCo die E-Mail-Adresse %{email} hinterlegt.
+          Sie haben bei Hinterland Systems die E-Mail-Adresse %{email} hinterlegt.
           Um sicherzustellen, dass Sie Zugriff auf diese Adresse haben, bitten wir Sie, die Verifizierung abzuschließen.
 
           Bitte klicken Sie dazu auf folgenden Link:
@@ -192,17 +120,17 @@ de:
           Vielen Dank für Ihre Mithilfe!
 
           Mit freundlichen Grüßen
-          Ihr Team vom Datenintermediär DID FlexCo
+          Ihr Team von Hinterland Systems
         body_html: |
           <p>Guten Tag %{name},</p>
-          <p>Sie haben beim Datenintermediär DID FlexCo die E-Mail-Adresse %{email} hinterlegt. Um sicherzustellen, dass Sie Zugriff auf diese Adresse haben, bitten wir Sie, die Verifizierung abzuschließen.</p>
+          <p>Sie haben beim Datennetzwerk Hinterland Systems die E-Mail-Adresse %{email} hinterlegt. Um sicherzustellen, dass Sie Zugriff auf diese Adresse haben, bitten wir Sie, die Verifizierung abzuschließen.</p>
           <p>Bitte klicken Sie dazu auf folgenden Link:<br>
           <a href="%{link}">%{link}</a></p>
           <p>Aus Sicherheitsgründen ist dieser Link nur 24 Stunden gültig.<br>
           Falls Sie diese Änderung nicht selbst veranlasst haben, ignorieren Sie bitte diese Nachricht.</p>
           <p>Vielen Dank für Ihre Mithilfe!</p>
           <p>Mit freundlichen Grüßen<br>
-          Ihr Team vom Datenintermediär DID FlexCo</p>
+          Ihr Team von Hinterland Systems</p>
       external_user:
         subject: "Userfreigabe"
         body_text: |
@@ -242,48 +170,61 @@ de:
     msg_saved: "Datensatz gespeichert."
   admin:
     lang:
-      english: English
-      german: Deutsch
+      english: "English"
+      german: "Deutsch"
     color_mode:
-      light: Hell
-      dark: Dunkel
-      auto: Auto
+      light: "Hell"
+      dark: "Dunkel"
+      auto: "Auto"
     id_austria:
-      eid_url: "idaustria.intermediary.at"
+      eid_url: "ida.hinterland.systems"
       ida_host: "https://eid.oesterreich.gv.at"
-      state_prefix: dida
+      state_prefix: "hsys"
     images:
-      logo_light: "did.png"
-      logo_dark: "did-dark.png"
-      logo_alt: "DID Logo"
+      logo_light: "hs.png"
+      logo_dark: "hs-dark.png"
+      logo_alt: "Hinterland Systems Logo"
     header:
-      title: "DID Daten-Intermediär-Dienste FlexCo"
-      title2: "Daten-Intermediär-Dienste FlexCo"
-      title_short: "Intermediär"
+      title: "Hinterland Registry"
+      title2: "Hinterland Registry"
+      title_short: "Hinterland Registry"
     footer:
       imprint: "Impressum"
-      imprint_url: "https://intermediary.at/impressum"
+      imprint_url: "https://hinterland.systems/imprint/"
       privacy: "Datenschutz"
-      privacy_url: "https://intermediary.at/datenschutz"
+      privacy_url: "https://hinterland.systems/privacy-policy/"
     messages:
       unknown: "unbekannt"
       invalid_input: "Ungültige Eingabe"
       authenticate: "Bitte melden Sie sich zuerst an!"
       error_login: "Ein Fehler ist bei der Authentifizierung aufgetreten."
-      provide_email: "Bitte vervollständigen Sie Ihr Profil und geben Sie eine E-Mail-Adresse an. [<a href='/de/settings'>Profil öffnen</a>]"
+      provide_email: "Bitte vervollständigen Sie Ihr Profil und geben Sie eine E-Mail-Adresse an."
       invalid_email: "Die eingegebene E-Mail-Adresse ist ungültig. Bitte überprüfen Sie Ihre Eingabe."
       email_error: "Beim Senden der E-Mail ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
-      email_sent: "Ein E-Mail zur Verifizierung wurde erfolgreich versendet."   
+      email_sent: "Ein E-Mail zur Verifizierung wurde erfolgreich versendet."
       unknown_email_token: "Der E-Mail-Bestätigungslink ist ungültig oder wurde nicht gefunden."
       expired_email_token: "Der E-Mail-Bestätigungslink ist abgelaufen. Bitte fordern Sie einen neuen an."
       email_verified: "Ihre E-Mail-Adresse wurde erfolgreich verifiziert."
       email_verification_failed: "Die E-Mail-Adresse konnte nicht verifiziert werden. Bitte versuchen Sie es erneut."
       connect_wallet: "Bitte verknüpfen Sie Ihr Profil mit einem Wallet."
-      reconnect_wallet: "Bitte erneuern Sie die Verknüpfung in Ihrem Profil mit einem Wallet. [<a href='/de/settings'>Profil öffnen</a>]"
+      reconnect_wallet: "Bitte erneuern Sie die Verknüpfung in Ihrem Profil mit einem Wallet."
       operation_canceled: "Die Operation konnte nicht durchgeführt werden."
       not_authorized: "Sie haben nicht die erforderliche Berechtigung, um diese Aktion auszuführen."
   time:
     formats:
       long: "%d.%m.%Y %H:%M"
   date:
-    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+    month_names:
+      - "~"
+      - "Januar"
+      - "Februar"
+      - "März"
+      - "April"
+      - "Mai"
+      - "Juni"
+      - "Juli"
+      - "August"
+      - "September"
+      - "Oktober"
+      - "November"
+      - "Dezember"

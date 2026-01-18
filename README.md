@@ -1,13 +1,13 @@
 # DGA Frontend
 
-This repository provides the frontend implementation for **Data Intermediary** and **Data Altruism Organisation** services developed under the **EU Data Governance Act (DGA)** framework.  
-It delivers user-facing components that enable individuals and organizations to manage data sharing, consent, and altruistic data contributions in a **transparent, trusted, and human-centric** manner.
+This repository provides the frontend implementation for **Data Intermediary** and **Data Altruism Organisation (DAO)** services developed under the **EU Data Governance Act (DGA)** framework.  
+It delivers user-facing components that enable individuals and organizations to manage and formalise data sharing workflows, consent, and altruistic data contributions in a **transparent, trustworthy, and human-centric** manner.
 
 ---
 
 ## 🧩 Overview
 
-The frontend serves as the **interaction layer** for DGA-compliant data services, allowing users to:
+The frontend serves as the **interaction layer** for DGA-compliant data network services, allowing users to:
 
 - Manage member accounts  
 - View, create, and revoke **data sharing consents**  
@@ -15,11 +15,11 @@ The frontend serves as the **interaction layer** for DGA-compliant data services
 - Access dashboards for **data access requests, audit trails, and credentials**  
 - Interact with **wallets** and **verifiable credentials** through secure OID4VCI / OID4VP flows  
 
-It is designed to be modular, adaptable, and compatible with multiple backend environments (e.g., Data Intermediary Platform, Hinterland DAO Portal).
+It is designed to be modular, adaptable, and compatible with multiple backend environments (e.g., Data Intermediary Platform, Hinterland Systems).
 
 ## About  
 
-<img align="right" src="https://raw.githubusercontent.com/OwnYourData/dc-dga/main/app/assets/images/logo-ngi-trustchain-positive.png" height="100">This project has received funding from the European Union’s Horizon 2020 research and innovation program through the [NGI TRUSTCHAIN program](https://trustchain.ngi.eu/) under cascade funding agreement No 101093274.
+<img align="right" src="https://raw.githubusercontent.com/OwnYourData/dc-dga/main/app/assets/images/logo-ngi-trustchain-positive.png" height="100">Data Altruism for Hinterland Systems DAO4HS has received funding from the EU's Horizon Europe research and innovation program through the [NGI TRUSTCHAIN program](https://trustchain.ngi.eu/) under cascade funding agreement No 101093274.
 
 <br clear="both" />
 

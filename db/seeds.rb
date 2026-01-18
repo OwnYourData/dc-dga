@@ -2,38 +2,38 @@
 Knowledgebase.find_or_initialize_by(short: "intermediary", lang: "de").update!(
   position: 1,
   frontpage: true,
-  title: "Vorteile eines Datenintermediärs",
+  title: "Vorteile eines Datennetzwerks",
   icon: "people-fill",
-  intro: "Erfahren Sie, wie ein neutraler Intermediär Vertrauen schafft, Datenaustausch vereinfacht und die Einhaltung regulatorischer Anforderungen unterstützt.",
+  intro: "Erfahren Sie, wie ein Datennetzwerk Vertrauen schafft, Workflows vereinfacht, formalisiert und die Einhaltung regulatorischer Anforderungen unterstützt.",
   link: "/faq/intermediary",
-  description: "intermediary *de*"
+  description: "Die DAO dient als Governance-Kern des Datennetzwerks und erleichert die Formalisierung der workflows zwischen der Gruppe der Datenfreizügigen und daran interessierten Regionen."
 )
 Knowledgebase.find_or_initialize_by(short: "intermediary", lang: "en").update!(
   position: 1,
   frontpage: true,
-  title: "Benefits of a Data Intermediary",
+  title: "Benefits of a Data Network",
   icon: "people-fill",
-  intro: "Learn how a neutral intermediary builds trust, simplifies data exchange, and supports compliance with regulatory requirements.",
+  intro: "Learn how a regulated data network builds trust, simplifies and formalizes workflows, and supports compliance with regulatory requirements.",
   link: "/faq/intermediary",
-  description: "intermediary **en**"
+  description: "DAO serves as the governance nucleus of the data network and facilitates the formalisation of workflows between contributors and regional analysts."
 )
 
 # provide
 Knowledgebase.find_or_initialize_by(short: "provide", lang: "de").update!(
   position: 2,
   frontpage: true,
-  title: "Daten bereitstellen",
+  title: "Daten beitragen",
   icon: "upload",
-  intro: "Hier erfahren Sie, wie Sie Ihre Daten im Intermediär registrieren und bereitstellen können – vom Datenkatalog über Metadaten bis hin zur Verwaltung von Zugriffsrechten.",
+  intro: "Hier erfahren Sie, wie Sie Ihre Daten im Datennetzwerk registrieren und beitragen können – vom Datenkatalog über Metadaten bis hin zur Verwaltung von Zugriffsrechten.",
   link: "/faq/provide",
   description: ""
 )
 Knowledgebase.find_or_initialize_by(short: "provide", lang: "en").update!(
   position: 2,
   frontpage: true,
-  title: "Provide Data",
+  title: "Contribute Data",
   icon: "upload",
-  intro: "Learn how to register and provide your data in the intermediary—from the data catalogue and metadata to managing access rights.",
+  intro: "Learn how to register and contribute your data to the data network — data catalogue and metadata to managing access rights.",
   link: "/faq/provide",
   description: ""
 )

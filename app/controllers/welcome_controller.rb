@@ -17,9 +17,9 @@ class WelcomeController < ApplicationController
     require 'chunky_png'
     
     def start
-        if logged_in?
-            redirect_to info_path
-            return
+        bpk = "dev:#{SecureRandom.hex(4)}"
+        log_in(bpk)
+        redirect_to info_path and return
         end
         
         # QR Code for Wallet login

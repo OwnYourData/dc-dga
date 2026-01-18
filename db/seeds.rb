@@ -84,7 +84,7 @@ Knowledgebase.find_or_initialize_by(short: "register", lang: "de").update!(
   frontpage: true,
   title: "Service registrieren",
   icon: "ui-checks-grid",
-  intro: "Wenn Sie einen eigenen Service anbieten möchten, erfahren Sie hier, wie Sie diesen registrieren, beschreiben und mit den passenden Datenschutz- und Nutzungsrichtlinien versehen.",
+  intro: "Wenn Sie einen eigenen Service integrieren möchten, erfahren Sie hier, wie Sie diesen registrieren, beschreiben und mit den passenden Datenschutz- und Nutzungsrichtlinien versehen.",
   link: "/faq/register",
   description: ""
 )
@@ -93,7 +93,7 @@ Knowledgebase.find_or_initialize_by(short: "register", lang: "en").update!(
   frontpage: true,
   title: "Register a Service",
   icon: "ui-checks-grid",
-  intro: "If you want to offer your own service, learn how to register and describe it and attach the appropriate privacy and terms-of-use policies.",
+  intro: "If you want to integrate your own service, learn how to register and describe it and attach the appropriate privacy and terms-of-use policies.",
   link: "/faq/register",
   description: ""
 )

@@ -44,22 +44,26 @@ class WelcomeController < ApplicationController
 
     # redirect to ID Austria Authentication
     def ida_redirect
-        session_id = params[:session_id]
-        prefix = ENV['IDA_PREFIX'] || I18n.t('admin.id_austria.state_prefix')
-        ida_url = I18n.t('admin.id_austria.ida_host')
-        ida_url += '/auth/idp/profile/oidc/authorize'
-        ida_url += '?response_type=code'
-        ida_url += '&client_id=https%3A%2F%2F' + I18n.t('admin.id_austria.eid_url')
-        ida_url += '&redirect_uri=https%3A%2F%2F' + I18n.t('admin.id_austria.eid_url') + '%2Fconnect'
-        ida_url += '&scope=openid+profile+eid'
-        ida_url += '&state=' + prefix + ':' + session_id.to_s
+        if ENV['SKIP_IDAUSTRA'].to_s == 'true'
+            redirect_to '/id-austria'
+        else
+            session_id = params[:session_id]
+            prefix = ENV['IDA_PREFIX'] || I18n.t('admin.id_austria.state_prefix')
+            ida_url = I18n.t('admin.id_austria.ida_host')
+            ida_url += '/auth/idp/profile/oidc/authorize'
+            ida_url += '?response_type=code'
+            ida_url += '&client_id=https%3A%2F%2F' + I18n.t('admin.id_austria.eid_url')
+            ida_url += '&redirect_uri=https%3A%2F%2F' + I18n.t('admin.id_austria.eid_url') + '%2Fconnect'
+            ida_url += '&scope=openid+profile+eid'
+            ida_url += '&state=' + prefix + ':' + session_id.to_s
 
-        createEvent(
-            bpk: nil,
-            event_str: 'start_ida',
-            event_object: {session_id: session_id, ip: request.remote_ip, ida_url: ida_url} )
+            createEvent(
+                bpk: nil,
+                event_str: 'start_ida',
+                event_object: {session_id: session_id, ip: request.remote_ip, ida_url: ida_url} )
 
-        redirect_to ida_url, allow_other_host: true
+            redirect_to ida_url, allow_other_host: true
+        end
     end
 
     # redirect coming back from ID Austria Authentication
@@ -118,26 +122,43 @@ class WelcomeController < ApplicationController
     end
 
     def idaustria
-        token = params[:token]
-        payload = JWT.decode token, nil, false
-        bpk = payload.first['urn:pvpgvat:oidc.bpk']
-        sid = payload.first['state'].split(':').last
-        @store = Store.find_by_key(sid)
-        if @store.nil?
-            event_object = {
-                token: token,
-                payload: payload,
-                state: sid
-            }
-            createEvent(bpk: bpk, 
-                        event_str: 'unknown_user', 
-                        event_object: event_object)
-            flash[:alert] = I18n.t('admin.messages.invalid_login')
-            redirect_to start_path
-            return
+        if ENV['SKIP_IDAUSTRA'].to_s == 'true'
+            if User.count == 0
+                @user = User.new
+            else
+                @user = User.first
+            end
+            @user.bpk = "XZVR+1596541419:czt5gJf7Sg+kPKyPL6bfdspSzMQ="
+            @user.given_name = "Demo"
+            @user.last_name = "Benutzer"
+            @user.ida_auth_time = Time.now.to_i
+            @user.postcode = '1010'
+            @user.qaa_eidas_level = 'low'
+            @user.signature = ''
+            @user.save
+            bpk = @user.bpk
+        else
+            token = params[:token]
+            payload = JWT.decode token, nil, false
+            bpk = payload.first['urn:pvpgvat:oidc.bpk']
+            sid = payload.first['state'].split(':').last
+            @store = Store.find_by_key(sid)
+            if @store.nil?
+                event_object = {
+                    token: token,
+                    payload: payload,
+                    state: sid
+                }
+                createEvent(bpk: bpk, 
+                            event_str: 'unknown_user', 
+                            event_object: event_object)
+                flash[:alert] = I18n.t('admin.messages.invalid_login')
+                redirect_to start_path
+                return
+            end
+            # delete record so that sid token cannot be reused
+            @store.delete
         end
-        # delete record so that sid token cannot be reused
-        @store.delete
 
         log_in(bpk)
         createEvent(bpk: bpk, 

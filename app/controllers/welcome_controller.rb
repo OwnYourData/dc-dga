@@ -20,7 +20,6 @@ class WelcomeController < ApplicationController
         bpk = "dev:#{SecureRandom.hex(4)}"
         log_in(bpk)
         redirect_to info_path and return
-        end
         
         # QR Code for Wallet login
         @session_id = SecureRandom.uuid

@@ -24,7 +24,7 @@ de:
     msg_record_deleted: "Der Entwurf wurde gelöscht."
     uc_header: "Use Case"
     description_header: "Beschreibung"
-    scan_qr_code_instructions: "Scannen Sie den QR-Code mit Ihrer Wallet, um das Data Agreement für die Datenweitergabe zu unterschreiben."
+    scan_qr_code_instructions: "Scannen Sie den QR-Code mit Ihrer Wallet, um das Data Agreement für den Datenbeitrag zu unterschreiben."
   data:
     request_access_hint: "Zugriff anfordern"
     msg_record_deleted: "Der Eintrag wurde aus dem Datenkatalog entfernt."

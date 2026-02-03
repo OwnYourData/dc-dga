@@ -74,7 +74,7 @@ en:
     sd_tab: "Self-Declaration"
     sd_data_consumer_tab: "for Analysts"
     sd_data_provider_tab: "for Contributors"
-    sd_service_provider_tab: "for Developers"
+    sd_service_provider_tab: "for Service Providers"
     payment_tab: "Membership Details"
   general:
     time_header: "Timestamp"

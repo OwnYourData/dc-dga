@@ -97,3 +97,23 @@ Knowledgebase.find_or_initialize_by(short: "register", lang: "en").update!(
   link: "/faq/register",
   description: ""
 )
+
+# orchestration
+Knowledgebase.find_or_initialize_by(short: "orchestration", lang: "de").update!(
+  position: 6,
+  frontpage: true,
+  title: "Datenaltruismus orchestrieren",
+  icon: "ui-checks-grid",
+  intro: "Unser strategischer Beitrag zum Transparenzsystem der Zukunftskommission Landwirtschaft und zum EU‑Strategiedialog über die Zukunft der Landwirtschaft.",
+  link: "/faq/orchestrate",
+  description: ""
+)
+Knowledgebase.find_or_initialize_by(short: "register", lang: "en").update!(
+  position: 6,
+  frontpage: true,
+  title: "Orchestrate Data Altruism",
+  icon: "ui-checks-grid",
+  intro: "A strategic contribution to the transparency framework for the EU’s Strategic Dialogue on Agriculture.",
+  link: "/faq/orchestrate",
+  description: ""
+)

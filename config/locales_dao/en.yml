@@ -49,7 +49,7 @@ en:
     reference_info: "Email address of an existing user who can vouch for you"
   info:
     heading: "Welcome %{name}!"
-    intro: "We are pleased that you are participating in our data ecosystem! Below you will find information and links to help you make the most of our service."
+    intro: "We are pleased that you are participating in our data network! Below you will find information and links to help you make the most of our service."
     more_questions_html: "More questions? In our %{link} you will find answers to the most important topics."
     faq_link_text: "frequently asked questions"
     faq_header: "Frequently Asked Questions"
@@ -81,7 +81,7 @@ en:
     details_header: "Details"
     show_entry_hint: "Show record"
   menu:
-    asset: "My Drafts"
+    asset: "My Schemes"
     data: "Data Catalogue"
     service: "Service Catalogue"
     contract: "My Contracts"

@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "no-reply@ownyourdata.eu"
+  default from: "no-reply@hinterland.systems"
   layout "mailer"
 end

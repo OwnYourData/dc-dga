@@ -2,38 +2,38 @@
 Knowledgebase.find_or_initialize_by(short: "intermediary", lang: "de").update!(
   position: 1,
   frontpage: true,
-  title: "Vorteile eines Datenintermediärs",
+  title: "Vorteile eines Datennetzwerks",
   icon: "people-fill",
-  intro: "Erfahren Sie, wie ein neutraler Intermediär Vertrauen schafft, Datenaustausch vereinfacht und die Einhaltung regulatorischer Anforderungen unterstützt.",
+  intro: "Erfahren Sie, wie ein Datennetzwerk Vertrauen schafft, Workflows vereinfacht, formalisiert und die Einhaltung regulatorischer Anforderungen unterstützt.",
   link: "/faq/intermediary",
-  description: "intermediary *de*"
+  description: "Die DAO dient als Governance-Kern des Datennetzwerks und erleichert die Formalisierung der workflows zwischen der Gruppe der Datenfreizügigen und daran interessierten Regionen."
 )
 Knowledgebase.find_or_initialize_by(short: "intermediary", lang: "en").update!(
   position: 1,
   frontpage: true,
-  title: "Benefits of a Data Intermediary",
+  title: "Benefits of a Data Network",
   icon: "people-fill",
-  intro: "Learn how a neutral intermediary builds trust, simplifies data exchange, and supports compliance with regulatory requirements.",
+  intro: "Learn how a regulated data network builds trust, simplifies and formalizes workflows, and supports compliance with regulatory requirements.",
   link: "/faq/intermediary",
-  description: "intermediary **en**"
+  description: "DAO serves as the governance nucleus of the data network and facilitates the formalisation of workflows between contributors and regional analysts."
 )
 
 # provide
 Knowledgebase.find_or_initialize_by(short: "provide", lang: "de").update!(
   position: 2,
   frontpage: true,
-  title: "Daten bereitstellen",
+  title: "Daten beitragen",
   icon: "upload",
-  intro: "Hier erfahren Sie, wie Sie Ihre Daten im Intermediär registrieren und bereitstellen können – vom Datenkatalog über Metadaten bis hin zur Verwaltung von Zugriffsrechten.",
+  intro: "Hier erfahren Sie, wie Sie Ihre Daten im Datennetzwerk registrieren und beitragen können – vom Datenkatalog über Metadaten bis hin zur Verwaltung von Zugriffsrechten.",
   link: "/faq/provide",
   description: ""
 )
 Knowledgebase.find_or_initialize_by(short: "provide", lang: "en").update!(
   position: 2,
   frontpage: true,
-  title: "Provide Data",
+  title: "Contribute Data",
   icon: "upload",
-  intro: "Learn how to register and provide your data in the intermediary—from the data catalogue and metadata to managing access rights.",
+  intro: "Learn how to register and contribute your data to the data network — data catalogue and metadata to managing access rights.",
   link: "/faq/provide",
   description: ""
 )
@@ -84,7 +84,7 @@ Knowledgebase.find_or_initialize_by(short: "register", lang: "de").update!(
   frontpage: true,
   title: "Service registrieren",
   icon: "ui-checks-grid",
-  intro: "Wenn Sie einen eigenen Service anbieten möchten, erfahren Sie hier, wie Sie diesen registrieren, beschreiben und mit den passenden Datenschutz- und Nutzungsrichtlinien versehen.",
+  intro: "Wenn Sie einen eigenen Service integrieren möchten, erfahren Sie hier, wie Sie diesen registrieren, beschreiben und mit den passenden Datenschutz- und Nutzungsrichtlinien versehen.",
   link: "/faq/register",
   description: ""
 )
@@ -93,7 +93,27 @@ Knowledgebase.find_or_initialize_by(short: "register", lang: "en").update!(
   frontpage: true,
   title: "Register a Service",
   icon: "ui-checks-grid",
-  intro: "If you want to offer your own service, learn how to register and describe it and attach the appropriate privacy and terms-of-use policies.",
+  intro: "If you want to integrate your own service, learn how to register and describe it and attach the appropriate privacy and terms-of-use policies.",
   link: "/faq/register",
+  description: ""
+)
+
+# orchestration
+Knowledgebase.find_or_initialize_by(short: "orchestration", lang: "de").update!(
+  position: 6,
+  frontpage: true,
+  title: "Datenaltruismus orchestrieren",
+  icon: "ui-checks-grid",
+  intro: "Unser strategischer Beitrag zum Transparenzsystem der Zukunftskommission Landwirtschaft und zum EU‑Strategiedialog über die Zukunft der Landwirtschaft.",
+  link: "/faq/orchestrate",
+  description: ""
+)
+Knowledgebase.find_or_initialize_by(short: "register", lang: "en").update!(
+  position: 6,
+  frontpage: true,
+  title: "Orchestrate Data Altruism",
+  icon: "ui-checks-grid",
+  intro: "A strategic contribution to the transparency framework for the EU’s Strategic Dialogue on Agriculture.",
+  link: "/faq/orchestrate",
   description: ""
 )
